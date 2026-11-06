@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "city": "郑州",
+  "timezone": "Asia/Shanghai",
+  "focus_brands": ["霸王茶姬", "古茗", "茶百道", "蜜雪冰城", "喜茶"],
+  "rss_sources": [
+    {"id": "news-zhengzhou", "name": "郑州饮品优惠公开资讯", "url": "https://www.bing.com/news/search?q=%E9%83%91%E5%B7%9E%20%E5%A5%B6%E8%8C%B6%20%E4%BC%98%E6%83%A0%20%E6%B4%BB%E5%8A%A8&format=rss", "platform": "公开资讯", "region": "郑州"},
+    {"id": "news-delivery", "name": "外卖红包公开资讯", "url": "https://www.bing.com/news/search?q=%E7%BE%8E%E5%9B%A2%20%E6%B7%98%E5%AE%9D%E9%97%AA%E8%B4%AD%20%E4%BA%AC%E4%B8%9C%E5%A4%96%E5%8D%96%20%E7%BA%A2%E5%8C%85&format=rss", "platform": "公开资讯", "region": "全国"},
+    {"id": "news-brands", "name": "奶茶品牌促销公开资讯", "url": "https://www.bing.com/news/search?q=%E9%9C%B8%E7%8E%8B%E8%8C%B6%E5%A7%AC%20%E5%8F%A4%E8%8C%97%20%E8%8C%B6%E7%99%BE%E9%81%93%20%E5%96%9C%E8%8C%B6%20%E4%BF%83%E9%94%80&format=rss", "platform": "公开资讯", "region": "未知"}
+  ],
+  "official_links": [
+    {"platform": "美团外卖", "label": "美团公开入口", "url": "https://www.meituan.com/"},
+    {"platform": "淘宝闪购", "label": "淘宝公开入口", "url": "https://www.taobao.com/"},
+    {"platform": "京东外卖", "label": "京东公开入口", "url": "https://www.jd.com/"},
+    {"platform": "抖音团购", "label": "抖音公开入口", "url": "https://www.douyin.com/"}
+  ]
+}
