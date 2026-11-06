@@ -1,0 +1,6 @@
+name = "milk-tea-radar-trigger"
+main = "worker.js"
+compatibility_date = "2026-11-01"
+
+# Configure GITHUB_TOKEN and TRIGGER_KEY as Cloudflare Worker secrets,
+# never write them in this file or commit them to the repository.
