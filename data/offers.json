@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-06T09:15:52+00:00",
+  "generated_at": "2026-11-07T07:43:52+00:00",
   "city": "郑州",
   "offers": [],
   "sources": [
@@ -9,21 +9,21 @@
       "name": "郑州饮品优惠公开资讯",
       "status": "ok",
       "count": 0,
-      "checked_at": "2026-11-06T09:15:52+00:00"
+      "checked_at": "2026-11-07T07:43:52+00:00"
     },
     {
       "id": "news-delivery",
       "name": "外卖红包公开资讯",
       "status": "ok",
       "count": 0,
-      "checked_at": "2026-11-06T09:15:52+00:00"
+      "checked_at": "2026-11-07T07:43:52+00:00"
     },
     {
       "id": "news-brands",
       "name": "奶茶品牌促销公开资讯",
       "status": "error",
       "count": 0,
-      "checked_at": "2026-11-06T09:15:52+00:00",
+      "checked_at": "2026-11-07T07:43:52+00:00",
       "error": "No RSS items"
     }
   ],
