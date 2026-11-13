@@ -1,9 +1,43 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-11-13T07:17:07+00:00",
+  "generated_at": "2026-11-13T08:00:01+00:00",
   "city": "郑州",
   "timezone": "Asia/Shanghai",
-  "offers": [],
+  "offers": [
+    {
+      "id": "559c254d2b086b2c77e0",
+      "title": "南昌11月9日-10日 奶茶免单 / 优惠 活动汇总!_腾讯新闻",
+      "summary": "",
+      "url": "https://news.qq.com/rain/a/20261109A08BFT00?path=a&app=news&redirect_pc=1",
+      "source_name": "百度资讯搜索",
+      "source_id": "web-baidu-news",
+      "source_type": "public_html",
+      "status": "unverified",
+      "verification_status": "manual_review_required",
+      "first_seen": "2026-11-13T08:00:01+00:00",
+      "last_seen": "2026-11-13T08:00:01+00:00",
+      "published_at": "2026-11-09T00:00:00+00:00",
+      "active": true,
+      "brand": "其他/通用",
+      "platform": "百度",
+      "region": "郑州",
+      "type": "免单",
+      "deal": {
+        "amount_yuan": null,
+        "discount": null,
+        "date_mentions": [
+          "11月9日"
+        ]
+      },
+      "evidence_keywords": [
+        "免单",
+        "优惠"
+      ],
+      "source_ids": [
+        "web-baidu-news"
+      ]
+    }
+  ],
   "sources": [
     {
       "id": "rss-zz-tea-deal",
@@ -14,7 +48,7 @@
       "configured_status": "unstable",
       "status": "ok",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "url": "https://www.bing.com/news/search?q=%E9%83%91%E5%B7%9E%20%E5%A5%B6%E8%8C%B6%20%E4%BC%98%E6%83%A0%20%E6%B4%BB%E5%8A%A8&format=rss",
       "adapter": "rss_atom",
       "fetched_url": "https://www.bing.com/news/search?q=%E9%83%91%E5%B7%9E%20%E5%A5%B6%E8%8C%B6%20%E4%BC%98%E6%83%A0%20%E6%B4%BB%E5%8A%A8&format=rss",
@@ -29,7 +63,7 @@
       "configured_status": "unstable",
       "status": "ok",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "url": "https://www.bing.com/news/search?q=%E9%83%91%E5%B7%9E%20%E5%A5%B6%E8%8C%B6%20%E5%85%8D%E5%8D%95%20%E4%B9%B0%E4%B8%80%E9%80%81%E4%B8%80&format=rss",
       "adapter": "rss_atom",
       "fetched_url": "https://www.bing.com/news/search?q=%E9%83%91%E5%B7%9E%20%E5%A5%B6%E8%8C%B6%20%E5%85%8D%E5%8D%95%20%E4%B9%B0%E4%B8%80%E9%80%81%E4%B8%80&format=rss",
@@ -44,7 +78,7 @@
       "configured_status": "unstable",
       "status": "error",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "url": "https://www.bing.com/news/search?q=%E9%83%91%E5%B7%9E%20%E5%A5%B6%E8%8C%B6%20%E5%9B%A2%E8%B4%AD%20%E6%BB%A1%E5%87%8F%20%E4%BC%98%E6%83%A0%E5%88%B8&format=rss",
       "error": "Feed contains no items"
     },
@@ -57,7 +91,7 @@
       "configured_status": "unstable",
       "status": "ok",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "url": "https://www.bing.com/news/search?q=%E9%83%91%E5%B7%9E%20%E5%A4%96%E5%8D%96%20%E7%BA%A2%E5%8C%85%20%E8%A1%A5%E8%B4%B4%20%E5%A5%B6%E8%8C%B6&format=rss",
       "adapter": "rss_atom",
       "fetched_url": "https://www.bing.com/news/search?q=%E9%83%91%E5%B7%9E%20%E5%A4%96%E5%8D%96%20%E7%BA%A2%E5%8C%85%20%E8%A1%A5%E8%B4%B4%20%E5%A5%B6%E8%8C%B6&format=rss",
@@ -72,7 +106,7 @@
       "configured_status": "unstable",
       "status": "error",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "url": "https://www.bing.com/news/search?q=%E7%BE%8E%E5%9B%A2%20%E6%B7%98%E5%AE%9D%E9%97%AA%E8%B4%AD%20%E4%BA%AC%E4%B8%9C%E5%A4%96%E5%8D%96%20%E7%BA%A2%E5%8C%85%20%E8%A1%A5%E8%B4%B4&format=rss",
       "error": "Feed contains no items"
     },
@@ -85,7 +119,7 @@
       "configured_status": "unstable",
       "status": "error",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "url": "https://www.bing.com/news/search?q=%E9%9C%B8%E7%8E%8B%E8%8C%B6%E5%A7%AC%20%E5%8F%A4%E8%8C%97%20%E8%8C%B6%E7%99%BE%E9%81%93%20%E8%9C%9C%E9%9B%AA%E5%86%B0%E5%9F%8E%20%E5%96%9C%E8%8C%B6%20%E4%BF%83%E9%94%80&format=rss",
       "error": "Feed contains no items"
     },
@@ -98,7 +132,7 @@
       "configured_status": "unstable",
       "status": "ok",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "url": "https://www.bing.com/news/search?q=%E9%83%91%E5%B7%9E%E6%9C%AC%E5%9C%B0%E5%AE%9D%20%E5%A5%B6%E8%8C%B6%20%E5%85%8D%E5%8D%95%20%E6%B4%BB%E5%8A%A8%E6%B1%87%E6%80%BB&format=rss",
       "adapter": "rss_atom",
       "fetched_url": "https://www.bing.com/news/search?q=%E9%83%91%E5%B7%9E%E6%9C%AC%E5%9C%B0%E5%AE%9D%20%E5%A5%B6%E8%8C%B6%20%E5%85%8D%E5%8D%95%20%E6%B4%BB%E5%8A%A8%E6%B1%87%E6%80%BB&format=rss",
@@ -113,7 +147,7 @@
       "configured_status": "unstable",
       "status": "ok",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "url": "https://www.bing.com/news/search?q=%E9%9C%B8%E7%8E%8B%E8%8C%B6%E5%A7%AC%200.01%E5%85%83%20%E5%85%91%E6%8D%A2%E5%88%B8%20%E6%B4%BB%E5%8A%A8&format=rss",
       "adapter": "rss_atom",
       "fetched_url": "https://www.bing.com/news/search?q=%E9%9C%B8%E7%8E%8B%E8%8C%B6%E5%A7%AC%200.01%E5%85%83%20%E5%85%91%E6%8D%A2%E5%88%B8%20%E6%B4%BB%E5%8A%A8&format=rss",
@@ -128,7 +162,7 @@
       "configured_status": "unstable",
       "status": "ok",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "url": "https://www.bing.com/news/search?q=%E5%8F%A4%E8%8C%97%20%E6%98%9F%E6%9C%9F%E4%B8%89%20%E5%85%8D%E5%8D%95%E5%88%B8%20%E5%8F%A3%E4%BB%A4&format=rss",
       "adapter": "rss_atom",
       "fetched_url": "https://www.bing.com/news/search?q=%E5%8F%A4%E8%8C%97%20%E6%98%9F%E6%9C%9F%E4%B8%89%20%E5%85%8D%E5%8D%95%E5%88%B8%20%E5%8F%A3%E4%BB%A4&format=rss",
@@ -141,11 +175,13 @@
       "channel_type": "rss",
       "access_method": "rss_reader",
       "configured_status": "unstable",
-      "status": "error",
+      "status": "ok",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "url": "https://www.bing.com/news/search?q=%E8%8C%B6%E7%99%BE%E9%81%93%20%E4%B9%B0%E4%B8%80%E9%80%81%E4%B8%80%20%E5%88%AE%E5%88%AE%E4%B9%90%20%E5%88%B8&format=rss",
-      "error": "Feed contains no items"
+      "adapter": "rss_atom",
+      "fetched_url": "https://www.bing.com/news/search?q=%E8%8C%B6%E7%99%BE%E9%81%93%20%E4%B9%B0%E4%B8%80%E9%80%81%E4%B8%80%20%E5%88%AE%E5%88%AE%E4%B9%90%20%E5%88%B8&format=rss",
+      "diagnostic": "已检查公开内容；所有结果仍需人工核验"
     },
     {
       "id": "rss-mixue",
@@ -156,7 +192,7 @@
       "configured_status": "unstable",
       "status": "ok",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "url": "https://www.bing.com/news/search?q=%E8%9C%9C%E9%9B%AA%E5%86%B0%E5%9F%8E%20%E5%AF%B9%E5%8F%A3%E4%BB%A4%20%E5%85%8D%E5%8D%95%20%E9%9B%86%E5%8D%A1&format=rss",
       "adapter": "rss_atom",
       "fetched_url": "https://www.bing.com/news/search?q=%E8%9C%9C%E9%9B%AA%E5%86%B0%E5%9F%8E%20%E5%AF%B9%E5%8F%A3%E4%BB%A4%20%E5%85%8D%E5%8D%95%20%E9%9B%86%E5%8D%A1&format=rss",
@@ -171,7 +207,7 @@
       "configured_status": "unstable",
       "status": "error",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "url": "https://www.bing.com/news/search?q=%E5%96%9C%E8%8C%B6%20%E4%B9%B0%E4%B8%80%E9%80%81%E4%B8%80%20%E4%BC%98%E6%83%A0%E5%88%B8%20%E5%96%9C%E8%8C%B6GO&format=rss",
       "error": "Feed contains no items"
     },
@@ -184,7 +220,7 @@
       "configured_status": "degraded",
       "status": "ok",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "url": "https://www.bing.com/search?q=%E9%83%91%E5%B7%9E%20%E5%A5%B6%E8%8C%B6%20%E4%BC%98%E6%83%A0%E5%88%B8%20%E7%BA%A2%E5%8C%85%20%E6%BB%A1%E5%87%8F&format=rss",
       "adapter": "rss_atom",
       "fetched_url": "https://www.bing.com/search?q=%E9%83%91%E5%B7%9E%20%E5%A5%B6%E8%8C%B6%20%E4%BC%98%E6%83%A0%E5%88%B8%20%E7%BA%A2%E5%8C%85%20%E6%BB%A1%E5%87%8F&format=rss",
@@ -199,7 +235,7 @@
       "configured_status": "degraded",
       "status": "ok",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "url": "https://www.bing.com/search?q=%E9%83%91%E5%B7%9E%20%E5%A5%B6%E8%8C%B6%20%E9%99%90%E6%97%B6%E4%BC%98%E6%83%A0%20%E5%9B%A2%E8%B4%AD%20%E7%89%B9%E6%83%A0&format=rss",
       "adapter": "rss_atom",
       "fetched_url": "https://www.bing.com/search?q=%E9%83%91%E5%B7%9E%20%E5%A5%B6%E8%8C%B6%20%E9%99%90%E6%97%B6%E4%BC%98%E6%83%A0%20%E5%9B%A2%E8%B4%AD%20%E7%89%B9%E6%83%A0&format=rss",
@@ -214,7 +250,7 @@
       "configured_status": "unstable",
       "status": "ok",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "url": "https://news.google.com/rss/search?q=%E9%83%91%E5%B7%9E%20%E5%A5%B6%E8%8C%B6%20%E4%BC%98%E6%83%A0&hl=zh-CN&gl=CN&ceid=CN:zh-Hans",
       "adapter": "rss_atom",
       "fetched_url": "https://news.google.com/rss/search?q=%E9%83%91%E5%B7%9E%20%E5%A5%B6%E8%8C%B6%20%E4%BC%98%E6%83%A0&hl=zh-CN&gl=CN&ceid=CN:zh-Hans",
@@ -229,7 +265,7 @@
       "configured_status": "ok",
       "status": "ok",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "url": "https://www.chagee.com/",
       "adapter": "public_html",
       "fetched_url": "https://www.chagee.com/zh-cn",
@@ -244,7 +280,7 @@
       "configured_status": "in_app_only",
       "status": "skipped_in_app",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "reason": "仅限 App、微信、小程序、社群或线下入口，需人工核验",
       "manual_review": true
     },
@@ -257,7 +293,7 @@
       "configured_status": "ok",
       "status": "skipped_policy",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "url": "https://weixin.sogou.com/weixin?type=1&query=%E9%9C%B8%E7%8E%8B%E8%8C%B6%E5%A7%AC",
       "reason": "登录、验证码或反自动化风险较高，按合规策略跳过并人工核验",
       "manual_review": true
@@ -271,7 +307,7 @@
       "configured_status": "in_app_only",
       "status": "skipped_in_app",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "reason": "仅限 App、微信、小程序、社群或线下入口，需人工核验",
       "manual_review": true
     },
@@ -284,7 +320,7 @@
       "configured_status": "ok",
       "status": "ok",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "url": "https://www.gumingnc.com/",
       "adapter": "public_html",
       "fetched_url": "https://www.gumingnc.com/",
@@ -299,7 +335,7 @@
       "configured_status": "in_app_only",
       "status": "skipped_in_app",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "reason": "仅限 App、微信、小程序、社群或线下入口，需人工核验",
       "manual_review": true
     },
@@ -312,7 +348,7 @@
       "configured_status": "ok",
       "status": "skipped_policy",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "url": "https://weixin.sogou.com/weixin?type=1&query=%E5%8F%A4%E8%8C%97",
       "reason": "登录、验证码或反自动化风险较高，按合规策略跳过并人工核验",
       "manual_review": true
@@ -326,7 +362,7 @@
       "configured_status": "in_app_only",
       "status": "skipped_in_app",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "reason": "仅限 App、微信、小程序、社群或线下入口，需人工核验",
       "manual_review": true
     },
@@ -337,13 +373,11 @@
       "channel_type": "web",
       "access_method": "browser",
       "configured_status": "ok",
-      "status": "ok",
+      "status": "error",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "url": "https://www.chabaidao.com/",
-      "adapter": "public_html",
-      "fetched_url": "https://www.chabaidao.com/",
-      "diagnostic": "已检查公开内容；所有结果仍需人工核验"
+      "error": "<urlopen error timed out>"
     },
     {
       "id": "brand-chabaidao-wxapp",
@@ -354,7 +388,7 @@
       "configured_status": "in_app_only",
       "status": "skipped_in_app",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "reason": "仅限 App、微信、小程序、社群或线下入口，需人工核验",
       "manual_review": true
     },
@@ -367,7 +401,7 @@
       "configured_status": "ok",
       "status": "skipped_policy",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "url": "https://weixin.sogou.com/weixin?type=1&query=%E8%8C%B6%E7%99%BE%E9%81%93",
       "reason": "登录、验证码或反自动化风险较高，按合规策略跳过并人工核验",
       "manual_review": true
@@ -381,7 +415,7 @@
       "configured_status": "in_app_only",
       "status": "skipped_in_app",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "reason": "仅限 App、微信、小程序、社群或线下入口，需人工核验",
       "manual_review": true
     },
@@ -394,7 +428,7 @@
       "configured_status": "ok",
       "status": "ok",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "url": "https://www.mxbc.com/",
       "adapter": "public_html",
       "fetched_url": "https://www.mxbc.com/",
@@ -409,7 +443,7 @@
       "configured_status": "in_app_only",
       "status": "skipped_in_app",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "reason": "仅限 App、微信、小程序、社群或线下入口，需人工核验",
       "manual_review": true
     },
@@ -422,7 +456,7 @@
       "configured_status": "ok",
       "status": "skipped_policy",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "url": "https://weixin.sogou.com/weixin?type=1&query=%E8%9C%9C%E9%9B%AA%E5%86%B0%E5%9F%8E",
       "reason": "登录、验证码或反自动化风险较高，按合规策略跳过并人工核验",
       "manual_review": true
@@ -436,7 +470,7 @@
       "configured_status": "in_app_only",
       "status": "skipped_in_app",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "reason": "仅限 App、微信、小程序、社群或线下入口，需人工核验",
       "manual_review": true
     },
@@ -449,7 +483,7 @@
       "configured_status": "ok",
       "status": "ok",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "url": "https://heycha.com/",
       "adapter": "public_html",
       "fetched_url": "https://heycha.com/",
@@ -464,7 +498,7 @@
       "configured_status": "in_app_only",
       "status": "skipped_in_app",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "reason": "仅限 App、微信、小程序、社群或线下入口，需人工核验",
       "manual_review": true
     },
@@ -477,7 +511,7 @@
       "configured_status": "ok",
       "status": "skipped_policy",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "url": "https://weixin.sogou.com/weixin?type=1&query=%E5%96%9C%E8%8C%B6",
       "reason": "登录、验证码或反自动化风险较高，按合规策略跳过并人工核验",
       "manual_review": true
@@ -491,7 +525,7 @@
       "configured_status": "in_app_only",
       "status": "skipped_in_app",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "reason": "仅限 App、微信、小程序、社群或线下入口，需人工核验",
       "manual_review": true
     },
@@ -504,7 +538,7 @@
       "configured_status": "in_app_only",
       "status": "skipped_in_app",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "reason": "仅限 App、微信、小程序、社群或线下入口，需人工核验",
       "manual_review": true
     },
@@ -517,7 +551,7 @@
       "configured_status": "in_app_only",
       "status": "skipped_in_app",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "reason": "仅限 App、微信、小程序、社群或线下入口，需人工核验",
       "manual_review": true
     },
@@ -530,7 +564,7 @@
       "configured_status": "in_app_only",
       "status": "skipped_in_app",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "reason": "仅限 App、微信、小程序、社群或线下入口，需人工核验",
       "manual_review": true
     },
@@ -543,7 +577,7 @@
       "configured_status": "in_app_only",
       "status": "skipped_in_app",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "reason": "仅限 App、微信、小程序、社群或线下入口，需人工核验",
       "manual_review": true
     },
@@ -556,7 +590,7 @@
       "configured_status": "in_app_only",
       "status": "skipped_in_app",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "reason": "仅限 App、微信、小程序、社群或线下入口，需人工核验",
       "manual_review": true
     },
@@ -569,7 +603,7 @@
       "configured_status": "in_app_only",
       "status": "skipped_in_app",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "reason": "仅限 App、微信、小程序、社群或线下入口，需人工核验",
       "manual_review": true
     },
@@ -582,7 +616,7 @@
       "configured_status": "in_app_only",
       "status": "skipped_in_app",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "reason": "仅限 App、微信、小程序、社群或线下入口，需人工核验",
       "manual_review": true
     },
@@ -595,7 +629,7 @@
       "configured_status": "in_app_only",
       "status": "skipped_in_app",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "reason": "仅限 App、微信、小程序、社群或线下入口，需人工核验",
       "manual_review": true
     },
@@ -608,7 +642,7 @@
       "configured_status": "in_app_only",
       "status": "skipped_in_app",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "reason": "仅限 App、微信、小程序、社群或线下入口，需人工核验",
       "manual_review": true
     },
@@ -621,7 +655,7 @@
       "configured_status": "in_app_only",
       "status": "skipped_in_app",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "reason": "仅限 App、微信、小程序、社群或线下入口，需人工核验",
       "manual_review": true
     },
@@ -634,7 +668,7 @@
       "configured_status": "in_app_only",
       "status": "skipped_in_app",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "reason": "仅限 App、微信、小程序、社群或线下入口，需人工核验",
       "manual_review": true
     },
@@ -647,7 +681,7 @@
       "configured_status": "in_app_only",
       "status": "skipped_in_app",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "reason": "仅限 App、微信、小程序、社群或线下入口，需人工核验",
       "manual_review": true
     },
@@ -660,7 +694,7 @@
       "configured_status": "ok",
       "status": "ok",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "url": "https://waimai.meituan.com/",
       "adapter": "public_html",
       "fetched_url": "https://waimai.meituan.com/",
@@ -675,7 +709,7 @@
       "configured_status": "ok",
       "status": "ok",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "url": "https://www.meituan.com/",
       "adapter": "public_html",
       "fetched_url": "https://www.meituan.com/",
@@ -690,7 +724,7 @@
       "configured_status": "needs_login",
       "status": "skipped_login",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "url": "https://www.dianping.com/",
       "reason": "配置标明需要登录或 Cookie，未采集",
       "manual_review": true
@@ -704,7 +738,7 @@
       "configured_status": "ok",
       "status": "ok",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "url": "https://taobaoshangou.ele.me/",
       "adapter": "public_html",
       "fetched_url": "https://taobaoshangou.ele.me/",
@@ -719,7 +753,7 @@
       "configured_status": "ok",
       "status": "ok",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "url": "https://www.taobao.com/",
       "adapter": "public_html",
       "fetched_url": "https://www.taobao.com/",
@@ -734,7 +768,7 @@
       "configured_status": "in_app_only",
       "status": "skipped_in_app",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "reason": "仅限 App、微信、小程序、社群或线下入口，需人工核验",
       "manual_review": true
     },
@@ -747,10 +781,10 @@
       "configured_status": "ok",
       "status": "ok",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "url": "https://www.jd.com/",
       "adapter": "public_html",
-      "fetched_url": "https://www.jd.com/",
+      "fetched_url": "https://corporate.jd.com/home",
       "diagnostic": "已检查公开内容；所有结果仍需人工核验"
     },
     {
@@ -762,7 +796,7 @@
       "configured_status": "in_app_only",
       "status": "skipped_in_app",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "reason": "仅限 App、微信、小程序、社群或线下入口，需人工核验",
       "manual_review": true
     },
@@ -775,7 +809,7 @@
       "configured_status": "ok",
       "status": "skipped_policy",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "url": "https://life.douyin.com/",
       "reason": "登录、验证码或反自动化风险较高，按合规策略跳过并人工核验",
       "manual_review": true
@@ -789,7 +823,7 @@
       "configured_status": "ok",
       "status": "skipped_policy",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "url": "https://www.douyin.com/",
       "reason": "登录、验证码或反自动化风险较高，按合规策略跳过并人工核验",
       "manual_review": true
@@ -803,7 +837,7 @@
       "configured_status": "ok",
       "status": "ok",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "url": "https://h5.waimai.meituan.com/",
       "adapter": "public_html",
       "fetched_url": "https://h5.waimai.meituan.com/",
@@ -818,7 +852,7 @@
       "configured_status": "ok",
       "status": "ok",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "url": "https://www.koubei.com/",
       "adapter": "public_html",
       "fetched_url": "https://www.koubei.com/",
@@ -833,7 +867,7 @@
       "configured_status": "ok",
       "status": "ok",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "url": "https://www.alipay.com/",
       "adapter": "public_html",
       "fetched_url": "https://www.alipay.com/",
@@ -848,7 +882,7 @@
       "configured_status": "ok",
       "status": "ok",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "url": "https://cn.unionpay.com/upowhtml/cn/templates/index/index.html",
       "adapter": "public_html",
       "fetched_url": "https://cn.unionpay.com/upowhtml/cn/templates/index/index.html",
@@ -863,7 +897,7 @@
       "configured_status": "in_app_only",
       "status": "skipped_in_app",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "reason": "仅限 App、微信、小程序、社群或线下入口，需人工核验",
       "manual_review": true
     },
@@ -876,7 +910,7 @@
       "configured_status": "ok",
       "status": "ok",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "url": "https://zz.bendibao.com/youhui/",
       "adapter": "public_html",
       "fetched_url": "https://zz.bendibao.com/youhui/",
@@ -889,13 +923,11 @@
       "channel_type": "web",
       "access_method": "browser",
       "configured_status": "ok",
-      "status": "ok",
+      "status": "error",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "url": "https://www.bendibao.com/",
-      "adapter": "public_html",
-      "fetched_url": "https://www.bendibao.com/challenge?return=%2F&reason=rate",
-      "diagnostic": "已检查公开内容；所有结果仍需人工核验"
+      "error": "<urlopen error timed out>"
     },
     {
       "id": "plat-smzdm",
@@ -906,7 +938,7 @@
       "configured_status": "degraded",
       "status": "skipped_policy",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "url": "https://www.smzdm.com/",
       "reason": "登录、验证码或反自动化风险较高，按合规策略跳过并人工核验",
       "manual_review": true
@@ -920,7 +952,7 @@
       "configured_status": "ok",
       "status": "ok",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "url": "https://www.dazhe.com/",
       "adapter": "public_html",
       "fetched_url": "https://www.dazhe.com/",
@@ -935,7 +967,7 @@
       "configured_status": "ok",
       "status": "ok",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "url": "https://news.qq.com/",
       "adapter": "public_html",
       "fetched_url": "https://news.qq.com/",
@@ -950,7 +982,7 @@
       "configured_status": "ok",
       "status": "ok",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "url": "https://news.163.com/",
       "adapter": "public_html",
       "fetched_url": "https://news.163.com/",
@@ -965,10 +997,10 @@
       "configured_status": "ok",
       "status": "ok",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "url": "https://cn.bing.com/search?q=%E9%83%91%E5%B7%9E%20%E5%A5%B6%E8%8C%B6%20%E7%BA%A2%E5%8C%85%20%E6%BB%A1%E5%87%8F%20%E9%99%90%E6%97%B6%E4%BC%98%E6%83%A0%20%E5%9B%A2%E8%B4%AD",
       "adapter": "web_search",
-      "fetched_url": "https://cn.bing.com/search?q=%E9%83%91%E5%B7%9E%20%E5%A5%B6%E8%8C%B6%20%E7%BA%A2%E5%8C%85%20%E6%BB%A1%E5%87%8F%20%E9%99%90%E6%97%B6%E4%BC%98%E6%83%A0%20%E5%9B%A2%E8%B4%AD",
+      "fetched_url": "https://www.bing.com/?q=%E9%83%91%E5%B7%9E%20%E5%A5%B6%E8%8C%B6%20%E7%BA%A2%E5%8C%85%20%E6%BB%A1%E5%87%8F%20%E9%99%90%E6%97%B6%E4%BC%98%E6%83%A0%20%E5%9B%A2%E8%B4%AD&mkt=zh-CN",
       "diagnostic": "已检查公开内容；所有结果仍需人工核验"
     },
     {
@@ -980,10 +1012,10 @@
       "configured_status": "ok",
       "status": "ok",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "url": "https://cn.bing.com/search?q=site%3Anew.qq.com%20%E9%83%91%E5%B7%9E%20%E5%A5%B6%E8%8C%B6%20%E5%85%8D%E5%8D%95%20%E6%B4%BB%E5%8A%A8%E6%B1%87%E6%80%BB",
       "adapter": "web_search",
-      "fetched_url": "https://cn.bing.com/search?q=site%3Anew.qq.com%20%E9%83%91%E5%B7%9E%20%E5%A5%B6%E8%8C%B6%20%E5%85%8D%E5%8D%95%20%E6%B4%BB%E5%8A%A8%E6%B1%87%E6%80%BB",
+      "fetched_url": "https://www.bing.com/?q=site%3Anew.qq.com%20%E9%83%91%E5%B7%9E%20%E5%A5%B6%E8%8C%B6%20%E5%85%8D%E5%8D%95%20%E6%B4%BB%E5%8A%A8%E6%B1%87%E6%80%BB&mkt=zh-CN",
       "diagnostic": "已检查公开内容；所有结果仍需人工核验"
     },
     {
@@ -995,10 +1027,10 @@
       "configured_status": "ok",
       "status": "ok",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "url": "https://cn.bing.com/search?q=site%3Amp.weixin.qq.com%20%E9%83%91%E5%B7%9E%20%E5%A5%B6%E8%8C%B6%20%E4%BC%98%E6%83%A0%20%E5%85%A5%E5%8F%A3",
       "adapter": "web_search",
-      "fetched_url": "https://cn.bing.com/search?q=site%3Amp.weixin.qq.com%20%E9%83%91%E5%B7%9E%20%E5%A5%B6%E8%8C%B6%20%E4%BC%98%E6%83%A0%20%E5%85%A5%E5%8F%A3",
+      "fetched_url": "https://www.bing.com/?q=site%3Amp.weixin.qq.com%20%E9%83%91%E5%B7%9E%20%E5%A5%B6%E8%8C%B6%20%E4%BC%98%E6%83%A0%20%E5%85%A5%E5%8F%A3&mkt=zh-CN",
       "diagnostic": "已检查公开内容；所有结果仍需人工核验"
     },
     {
@@ -1010,10 +1042,10 @@
       "configured_status": "ok",
       "status": "ok",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "url": "https://cn.bing.com/search?q=site%3Azz.bendibao.com%20%E5%A5%B6%E8%8C%B6%20%E4%BC%98%E6%83%A0%20%E5%85%8D%E5%8D%95",
       "adapter": "web_search",
-      "fetched_url": "https://cn.bing.com/search?q=site%3Azz.bendibao.com%20%E5%A5%B6%E8%8C%B6%20%E4%BC%98%E6%83%A0%20%E5%85%8D%E5%8D%95",
+      "fetched_url": "https://www.bing.com/?q=site%3Azz.bendibao.com%20%E5%A5%B6%E8%8C%B6%20%E4%BC%98%E6%83%A0%20%E5%85%8D%E5%8D%95&mkt=zh-CN",
       "diagnostic": "已检查公开内容；所有结果仍需人工核验"
     },
     {
@@ -1025,10 +1057,10 @@
       "configured_status": "ok",
       "status": "ok",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "url": "https://www.baidu.com/s?wd=%E9%83%91%E5%B7%9E%20%E5%A5%B6%E8%8C%B6%20%E4%BC%98%E6%83%A0%E5%88%B8%20%E5%9B%A2%E8%B4%AD",
       "adapter": "public_html",
-      "fetched_url": "https://wappass.baidu.com/static/captcha/tuxing_v2.html?&logid=10135534190575249025&ak=c27bbc89afca0463650ac9bde68ebe06&backurl=https%3A%2F%2Fwww.baidu.com%2Fs%3Fwd%3D%25E9%2583%2591%25E5%25B7%259E%2520%25E5%25A5%25B6%25E8%258C%25B6%2520%25E4%25BC%2598%25E6%2583%25A0%25E5%2588%25B8%2520%25E5%259B%25A2%25E8%25B4%25AD&ext=x9G9QDmMXq%2FNo87gjGO0Pw7%2BAefdySXswgWQuXZH1oBSIPuPx9h9pmFSYtnJpM3nUgqUK9LXd1cIlztrhMwiv5SosZm5LjA09RnZezJQHuTN27TG8uvv8SLCyIOEZ97r&signature=00f68df2457d36e8b5eb9313dd715ea9&timestamp=1794554227",
+      "fetched_url": "https://wappass.baidu.com/static/captcha/tuxing_v2.html?&logid=11482074908656923801&ak=c27bbc89afca0463650ac9bde68ebe06&backurl=https%3A%2F%2Fwww.baidu.com%2Fs%3Fwd%3D%25E9%2583%2591%25E5%25B7%259E%2520%25E5%25A5%25B6%25E8%258C%25B6%2520%25E4%25BC%2598%25E6%2583%25A0%25E5%2588%25B8%2520%25E5%259B%25A2%25E8%25B4%25AD&ext=x9G9QDmMXq%2FNo87gjGO0P2c0tthM3v4n1dcT0gDxCt1SIPuPx9h9pmFSYtnJpM3nUgqUK9LXd1cIlztrhMwiv5LGqKWhTZD8Q7xZpGkscD6lBiiij27rLhSp84MbPVpj&signature=e67c14a629cc04e72ab080d89582e2b1&timestamp=1794556807",
       "diagnostic": "已检查公开内容；所有结果仍需人工核验"
     },
     {
@@ -1039,11 +1071,11 @@
       "access_method": "browser",
       "configured_status": "ok",
       "status": "ok",
-      "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "count": 1,
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "url": "https://www.baidu.com/s?tn=news&word=%E9%83%91%E5%B7%9E%20%E5%A5%B6%E8%8C%B6%20%E5%85%8D%E5%8D%95%20%E4%BC%98%E6%83%A0",
       "adapter": "public_html",
-      "fetched_url": "https://wappass.baidu.com/static/captcha/tuxing_v2.html?&logid=11042085710911598247&ak=c27bbc89afca0463650ac9bde68ebe06&backurl=https%3A%2F%2Fwww.baidu.com%2Fs%3Ftn%3Dnews%26word%3D%25E9%2583%2591%25E5%25B7%259E%2520%25E5%25A5%25B6%25E8%258C%25B6%2520%25E5%2585%258D%25E5%258D%2595%2520%25E4%25BC%2598%25E6%2583%25A0&ext=x9G9QDmMXq%2FNo87gjGO0Pw7%2BAefdySXswgWQuXZH1oBSIPuPx9h9pmFSYtnJpM3nUgqUK9LXd1cIlztrhMwiv%2F008aMITeA7yiNuV6iSALnN27TG8uvv8SLCyIOEZ97r&signature=2948a402da9aee81a2c5e7c6c31f4973&timestamp=1794554227",
+      "fetched_url": "https://www.baidu.com/s?tn=news&word=%E9%83%91%E5%B7%9E%20%E5%A5%B6%E8%8C%B6%20%E5%85%8D%E5%8D%95%20%E4%BC%98%E6%83%A0",
       "diagnostic": "已检查公开内容；所有结果仍需人工核验"
     },
     {
@@ -1055,7 +1087,7 @@
       "configured_status": "ok",
       "status": "skipped_policy",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "url": "https://weixin.sogou.com/weixin?type=2&query=%E9%83%91%E5%B7%9E%20%E5%A5%B6%E8%8C%B6%20%E4%BC%98%E6%83%A0",
       "reason": "登录、验证码或反自动化风险较高，按合规策略跳过并人工核验",
       "manual_review": true
@@ -1069,7 +1101,7 @@
       "configured_status": "ok",
       "status": "skipped_policy",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "url": "https://weixin.sogou.com/weixin?type=1&query=%E9%83%91%E5%B7%9E%E6%9C%AC%E5%9C%B0%E5%AE%9D",
       "reason": "登录、验证码或反自动化风险较高，按合规策略跳过并人工核验",
       "manual_review": true
@@ -1083,7 +1115,7 @@
       "configured_status": "degraded",
       "status": "skipped_policy",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "url": "https://www.sogou.com/web?query=%E9%83%91%E5%B7%9E%20%E5%A5%B6%E8%8C%B6%20%E4%BC%98%E6%83%A0",
       "reason": "登录、验证码或反自动化风险较高，按合规策略跳过并人工核验",
       "manual_review": true
@@ -1097,7 +1129,7 @@
       "configured_status": "needs_login",
       "status": "skipped_login",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "url": "https://www.xiaohongshu.com/search_result/?keyword=%E9%83%91%E5%B7%9E%20%E5%A5%B6%E8%8C%B6%20%E4%BC%98%E6%83%A0",
       "reason": "配置标明需要登录或 Cookie，未采集",
       "manual_review": true
@@ -1111,7 +1143,7 @@
       "configured_status": "ok",
       "status": "skipped_policy",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "url": "https://www.douyin.com/search/%E9%83%91%E5%B7%9E%20%E5%A5%B6%E8%8C%B6%20%E4%BC%98%E6%83%A0",
       "reason": "登录、验证码或反自动化风险较高，按合规策略跳过并人工核验",
       "manual_review": true
@@ -1125,7 +1157,7 @@
       "configured_status": "needs_login",
       "status": "skipped_login",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "url": "https://s.weibo.com/weibo?q=%E9%83%91%E5%B7%9E%20%E5%A5%B6%E8%8C%B6%20%E4%BC%98%E6%83%A0",
       "reason": "配置标明需要登录或 Cookie，未采集",
       "manual_review": true
@@ -1139,7 +1171,7 @@
       "configured_status": "ok",
       "status": "skipped_policy",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "url": "https://search.bilibili.com/all?keyword=%E9%83%91%E5%B7%9E%20%E5%A5%B6%E8%8C%B6%20%E4%BC%98%E6%83%A0",
       "reason": "登录、验证码或反自动化风险较高，按合规策略跳过并人工核验",
       "manual_review": true
@@ -1153,7 +1185,7 @@
       "configured_status": "degraded",
       "status": "skipped_policy",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "url": "https://www.zhihu.com/search?q=%E9%83%91%E5%B7%9E%20%E5%A5%B6%E8%8C%B6%20%E4%BC%98%E6%83%A0",
       "reason": "登录、验证码或反自动化风险较高，按合规策略跳过并人工核验",
       "manual_review": true
@@ -1167,7 +1199,7 @@
       "configured_status": "degraded",
       "status": "skipped_policy",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "url": "https://search.smzdm.com/?c=home&s=%E5%A5%B6%E8%8C%B6%20%E4%BC%98%E6%83%A0%E5%88%B8",
       "reason": "登录、验证码或反自动化风险较高，按合规策略跳过并人工核验",
       "manual_review": true
@@ -1179,13 +1211,11 @@
       "channel_type": "web",
       "access_method": "browser",
       "configured_status": "ok",
-      "status": "ok",
+      "status": "error",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "url": "https://www.dahe.cn/",
-      "adapter": "public_html",
-      "fetched_url": "https://www.dahe.cn/",
-      "diagnostic": "已检查公开内容；所有结果仍需人工核验"
+      "error": "HTTP Error 403: Forbidden"
     },
     {
       "id": "web-topnews",
@@ -1194,13 +1224,11 @@
       "channel_type": "web",
       "access_method": "browser",
       "configured_status": "ok",
-      "status": "ok",
+      "status": "error",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "url": "https://www.topnews.cn/",
-      "adapter": "public_html",
-      "fetched_url": "https://www.topnews.cn/",
-      "diagnostic": "已检查公开内容；所有结果仍需人工核验"
+      "error": "HTTP Error 403: Forbidden"
     },
     {
       "id": "web-henandaily",
@@ -1211,7 +1239,7 @@
       "configured_status": "ok",
       "status": "ok",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "url": "https://www.henandaily.cn/",
       "adapter": "public_html",
       "fetched_url": "https://www.henandaily.cn/",
@@ -1226,7 +1254,7 @@
       "configured_status": "ok",
       "status": "ok",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "url": "https://mp.weixin.qq.com/",
       "adapter": "public_html",
       "fetched_url": "https://mp.weixin.qq.com/",
@@ -1241,7 +1269,7 @@
       "configured_status": "ok",
       "status": "skipped_policy",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "url": "https://weixin.sogou.com/weixin?type=1&query=%E9%83%91%E5%B7%9E%E6%9C%AC%E5%9C%B0%E5%AE%9D",
       "reason": "登录、验证码或反自动化风险较高，按合规策略跳过并人工核验",
       "manual_review": true
@@ -1255,7 +1283,7 @@
       "configured_status": "in_app_only",
       "status": "skipped_in_app",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "reason": "仅限 App、微信、小程序、社群或线下入口，需人工核验",
       "manual_review": true
     },
@@ -1268,7 +1296,7 @@
       "configured_status": "in_app_only",
       "status": "skipped_in_app",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "reason": "仅限 App、微信、小程序、社群或线下入口，需人工核验",
       "manual_review": true
     },
@@ -1281,7 +1309,7 @@
       "configured_status": "in_app_only",
       "status": "skipped_in_app",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "reason": "仅限 App、微信、小程序、社群或线下入口，需人工核验",
       "manual_review": true
     },
@@ -1294,7 +1322,7 @@
       "configured_status": "in_app_only",
       "status": "skipped_in_app",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "reason": "仅限 App、微信、小程序、社群或线下入口，需人工核验",
       "manual_review": true
     },
@@ -1307,7 +1335,7 @@
       "configured_status": "in_app_only",
       "status": "skipped_in_app",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "reason": "仅限 App、微信、小程序、社群或线下入口，需人工核验",
       "manual_review": true
     },
@@ -1320,7 +1348,7 @@
       "configured_status": "in_app_only",
       "status": "skipped_in_app",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "reason": "仅限 App、微信、小程序、社群或线下入口，需人工核验",
       "manual_review": true
     },
@@ -1333,7 +1361,7 @@
       "configured_status": "in_app_only",
       "status": "skipped_in_app",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "reason": "仅限 App、微信、小程序、社群或线下入口，需人工核验",
       "manual_review": true
     },
@@ -1346,7 +1374,7 @@
       "configured_status": "in_app_only",
       "status": "skipped_in_app",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "reason": "仅限 App、微信、小程序、社群或线下入口，需人工核验",
       "manual_review": true
     },
@@ -1359,7 +1387,7 @@
       "configured_status": "in_app_only",
       "status": "skipped_in_app",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "reason": "仅限 App、微信、小程序、社群或线下入口，需人工核验",
       "manual_review": true
     },
@@ -1372,7 +1400,7 @@
       "configured_status": "in_app_only",
       "status": "skipped_in_app",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "reason": "仅限 App、微信、小程序、社群或线下入口，需人工核验",
       "manual_review": true
     },
@@ -1385,7 +1413,7 @@
       "configured_status": "in_app_only",
       "status": "skipped_in_app",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "reason": "仅限 App、微信、小程序、社群或线下入口，需人工核验",
       "manual_review": true
     },
@@ -1398,7 +1426,7 @@
       "configured_status": "needs_login",
       "status": "skipped_login",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "url": "https://www.xiaohongshu.com/search_result/?keyword=%E9%83%91%E5%B7%9E%20%E5%A5%B6%E8%8C%B6%20%E7%BE%8A%E6%AF%9B",
       "reason": "配置标明需要登录或 Cookie，未采集",
       "manual_review": true
@@ -1412,7 +1440,7 @@
       "configured_status": "ok",
       "status": "skipped_policy",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "url": "https://www.douyin.com/search/%E9%83%91%E5%B7%9E%20%E5%A5%B6%E8%8C%B6%20%E5%9B%A2%E8%B4%AD",
       "reason": "登录、验证码或反自动化风险较高，按合规策略跳过并人工核验",
       "manual_review": true
@@ -1426,7 +1454,7 @@
       "configured_status": "in_app_only",
       "status": "skipped_in_app",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "reason": "仅限 App、微信、小程序、社群或线下入口，需人工核验",
       "manual_review": true
     },
@@ -1439,7 +1467,7 @@
       "configured_status": "ok",
       "status": "ok",
       "count": 0,
-      "checked_at": "2026-11-13T07:17:07+00:00",
+      "checked_at": "2026-11-13T08:00:01+00:00",
       "url": "https://zz.bendibao.com/youhui/",
       "adapter": "public_html",
       "fetched_url": "https://zz.bendibao.com/youhui/",
@@ -1450,31 +1478,31 @@
     "groups": {
       "rss_sources": {
         "total": 15,
-        "checked": 10,
+        "checked": 11,
         "skipped": 0,
-        "failed": 5,
+        "failed": 4,
         "leads": 0
       },
       "brand_official": {
         "total": 32,
-        "checked": 5,
+        "checked": 4,
         "skipped": 27,
-        "failed": 0,
+        "failed": 1,
         "leads": 0
       },
       "official_links": {
         "total": 21,
-        "checked": 14,
+        "checked": 13,
         "skipped": 7,
-        "failed": 0,
+        "failed": 1,
         "leads": 0
       },
       "web_search_sources": {
         "total": 19,
-        "checked": 10,
+        "checked": 8,
         "skipped": 9,
-        "failed": 0,
-        "leads": 0
+        "failed": 2,
+        "leads": 1
       },
       "mini_program_sources": {
         "total": 16,
@@ -1485,14 +1513,14 @@
       }
     },
     "statuses": {
-      "ok": 40,
-      "error": 5,
+      "ok": 37,
+      "error": 8,
       "skipped_in_app": 37,
       "skipped_policy": 17,
       "skipped_login": 4
     }
   },
   "verified_offer_count": 0,
-  "unverified_lead_count": 0,
+  "unverified_lead_count": 1,
   "note": "仅展示公开来源发现的待人工核验线索；入口、首页、新闻或搜索结果不等于已验证优惠。不会绕过登录、验证码、App 或小程序限制。"
 }
