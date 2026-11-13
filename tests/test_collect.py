@@ -118,6 +118,30 @@ class CollectorTests(unittest.TestCase):
         entries = collect.html_entries(body, "https://www.bing.com/search?q=tea", search_results=True)
         self.assertEqual([item["url"] for item in entries], ["https://deals.example/deal"])
 
+    def test_local_search_rejects_another_city_result(self):
+        body = """<html><a href='https://news.example/nanchang'>
+        南昌11月9日奶茶免单优惠活动汇总
+        </a></html>""".encode()
+        source = {
+            "id": "search", "name": "郑州奶茶搜索",
+            "url": "https://www.bing.com/search?q=zhengzhou+tea", "status": "ok",
+            "access_method": "browser", "region": "郑州",
+        }
+        opener = lambda *_args, **_kwargs: FakeResponse(
+            body, "text/html; charset=utf-8", source["url"]
+        )
+        original_now = collect.now
+        collect.now = lambda: dt.datetime(2026, 11, 13, tzinfo=dt.timezone.utc)
+        try:
+            offers, status = collect.collect_source(
+                source, "web_search_sources", config(), {},
+                "2026-11-13T02:00:00+00:00", opener,
+            )
+        finally:
+            collect.now = original_now
+        self.assertEqual(status["status"], "ok")
+        self.assertEqual(offers, [])
+
     def test_captcha_page_is_blocked(self):
         source = {"id": "web", "name": "公开搜索", "url": "https://example.org/search", "channel_type": "web", "access_method": "browser", "status": "ok"}
         opener = lambda *_args, **_kwargs: FakeResponse(b"<html>captcha verify</html>", "text/html", source["url"])
