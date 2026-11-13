@@ -1,30 +1,117 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-13T06:11:07+00:00",
+  "generated_at": "2026-11-13T07:02:55+00:00",
   "city": "郑州",
   "offers": [],
   "sources": [
     {
-      "id": "news-zhengzhou",
-      "name": "郑州饮品优惠公开资讯",
+      "id": "rss-zz-tea-deal",
+      "name": "郑州奶茶优惠资讯",
       "status": "ok",
       "count": 0,
-      "checked_at": "2026-11-13T06:11:07+00:00"
+      "checked_at": "2026-11-13T07:02:55+00:00"
     },
     {
-      "id": "news-delivery",
-      "name": "外卖红包公开资讯",
+      "id": "rss-zz-free",
+      "name": "郑州奶茶免单/买一送一",
       "status": "ok",
       "count": 0,
-      "checked_at": "2026-11-13T06:11:07+00:00"
+      "checked_at": "2026-11-13T07:02:55+00:00"
     },
     {
-      "id": "news-brands",
-      "name": "奶茶品牌促销公开资讯",
+      "id": "rss-zz-groupbuy",
+      "name": "郑州奶茶团购/满减",
       "status": "error",
       "count": 0,
-      "checked_at": "2026-11-13T06:11:07+00:00",
+      "checked_at": "2026-11-13T07:02:55+00:00",
       "error": "No RSS items"
+    },
+    {
+      "id": "rss-zz-waimai",
+      "name": "郑州外卖红包补贴",
+      "status": "ok",
+      "count": 0,
+      "checked_at": "2026-11-13T07:02:55+00:00"
+    },
+    {
+      "id": "rss-platform-subsidy",
+      "name": "平台补贴公开资讯",
+      "status": "error",
+      "count": 0,
+      "checked_at": "2026-11-13T07:02:55+00:00",
+      "error": "No RSS items"
+    },
+    {
+      "id": "rss-brand-promo",
+      "name": "奶茶品牌促销资讯",
+      "status": "error",
+      "count": 0,
+      "checked_at": "2026-11-13T07:02:55+00:00",
+      "error": "No RSS items"
+    },
+    {
+      "id": "rss-bendlbao-zz",
+      "name": "郑州本地宝优惠汇总稿",
+      "status": "ok",
+      "count": 0,
+      "checked_at": "2026-11-13T07:02:55+00:00"
+    },
+    {
+      "id": "rss-chagee",
+      "name": "霸王茶姬活动资讯",
+      "status": "ok",
+      "count": 0,
+      "checked_at": "2026-11-13T07:02:55+00:00"
+    },
+    {
+      "id": "rss-guming",
+      "name": "古茗星期三免单资讯",
+      "status": "ok",
+      "count": 0,
+      "checked_at": "2026-11-13T07:02:55+00:00"
+    },
+    {
+      "id": "rss-chabaidao",
+      "name": "茶百道买一送一资讯",
+      "status": "ok",
+      "count": 0,
+      "checked_at": "2026-11-13T07:02:55+00:00"
+    },
+    {
+      "id": "rss-mixue",
+      "name": "蜜雪冰城口令免单资讯",
+      "status": "ok",
+      "count": 0,
+      "checked_at": "2026-11-13T07:02:55+00:00"
+    },
+    {
+      "id": "rss-heytea",
+      "name": "喜茶优惠资讯",
+      "status": "error",
+      "count": 0,
+      "checked_at": "2026-11-13T07:02:55+00:00",
+      "error": "No RSS items"
+    },
+    {
+      "id": "rss-web-coupon",
+      "name": "网页搜索 RSS：郑州奶茶券",
+      "status": "ok",
+      "count": 0,
+      "checked_at": "2026-11-13T07:02:55+00:00"
+    },
+    {
+      "id": "rss-web-limited",
+      "name": "网页搜索 RSS：限时/团购",
+      "status": "ok",
+      "count": 0,
+      "checked_at": "2026-11-13T07:02:55+00:00"
+    },
+    {
+      "id": "rss-google-news",
+      "name": "Google 新闻 RSS（境外补充）",
+      "status": "ok",
+      "count": 0,
+      "checked_at": "2026-11-13T07:02:55+00:00"
     }
   ],
   "note": "这些是公开资讯中的优惠线索，未核实可领取资格。请前往原始来源核对。"
