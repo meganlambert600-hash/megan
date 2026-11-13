@@ -396,10 +396,8 @@ def collect_source(source: dict, group: str, cfg: dict, prior: dict[str, dict], 
             # Search engines sometimes return a fresh deal from another city even
             # when the query targets Zhengzhou.  Do not relabel that result as a
             # local lead merely because the source itself is configured as local.
-            if (group == "web_search_sources"
-                    and source.get("region") == cfg.get("city")
-                    and not any(word in f'{entry["title"]} {entry.get("summary", "")}'
-                                for word in matchers["city_words"])):
+            if not search_region_matches(entry["title"], entry.get("summary", ""),
+                                         source, group, cfg, matchers):
                 continue
             offer = make_offer(entry["title"], entry.get("summary", ""), entry["url"], source,
                                source_type, entry.get("published"), prior, timestamp, matchers)
@@ -414,6 +412,15 @@ def collect_source(source: dict, group: str, cfg: dict, prior: dict[str, dict], 
         return [], status_record(source, group, timestamp, "blocked", error=str(error)[:180], manual_review=True)
     except (urllib.error.URLError, TimeoutError, ET.ParseError, ValueError, OSError) as error:
         return [], status_record(source, group, timestamp, "error", error=str(error)[:180])
+
+
+def search_region_matches(title: str, summary: str, source: dict, group: str,
+                          cfg: dict, matchers: dict) -> bool:
+    """Require an explicit target-city signal for target-city web searches."""
+    if group != "web_search_sources" or source.get("region") != cfg.get("city"):
+        return True
+    combined = f"{title} {summary}"
+    return any(word in combined for word in matchers["city_words"])
 
 
 def merge_offer(target: dict[str, dict], candidate: dict) -> None:
@@ -468,6 +475,7 @@ def main() -> int:
     timestamp = now().isoformat(timespec="seconds")
     selected_ids = {value for value in os.environ.get("COLLECT_ONLY_IDS", "").split(",") if value}
     configured = [(group, source) for group in SOURCE_GROUPS for source in cfg.get(group, [])]
+    source_context = {source.get("id"): (group, source) for group, source in configured}
     if selected_ids:
         configured = [(group, source) for group, source in configured if source.get("id") in selected_ids]
     limit = int(os.environ.get("COLLECT_SOURCE_LIMIT", "0") or 0)
@@ -492,7 +500,13 @@ def main() -> int:
         statuses.append(status)
         for offer in offers:
             merge_offer(merged, offer)
+    stale_matchers = build_matchers(cfg)
     for old in prior.values():
+        old_context = source_context.get(old.get("source_id"))
+        if old_context and not search_region_matches(
+                old.get("title", ""), old.get("summary", ""), old_context[1],
+                old_context[0], cfg, stale_matchers):
+            continue
         try:
             seen = dt.datetime.fromisoformat(old["last_seen"])
             if seen.tzinfo and (now() - seen).days <= 7:
