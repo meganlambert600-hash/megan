@@ -393,6 +393,14 @@ def collect_source(source: dict, group: str, cfg: dict, prior: dict[str, dict], 
             source_type = "web_search" if is_search else "public_html"
         offers = []
         for entry in entries:
+            # Search engines sometimes return a fresh deal from another city even
+            # when the query targets Zhengzhou.  Do not relabel that result as a
+            # local lead merely because the source itself is configured as local.
+            if (group == "web_search_sources"
+                    and source.get("region") == cfg.get("city")
+                    and not any(word in f'{entry["title"]} {entry.get("summary", "")}'
+                                for word in matchers["city_words"])):
+                continue
             offer = make_offer(entry["title"], entry.get("summary", ""), entry["url"], source,
                                source_type, entry.get("published"), prior, timestamp, matchers)
             if offer:
