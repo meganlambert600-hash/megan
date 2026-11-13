@@ -1,17 +1,2817 @@
 {
-  "version": 1,
+  "version": 2,
   "city": "郑州",
   "timezone": "Asia/Shanghai",
-  "focus_brands": ["霸王茶姬", "古茗", "茶百道", "蜜雪冰城", "喜茶"],
+  "generated_at": "2026-11-13",
+  "based_on": "sources.json (v1, 用户提供)",
+  "changelog": "由 v1 的 2 类（3 条 RSS + 4 个平台首页）升级为五类来源；保留 rss_sources / official_links 字段名与原有 7 条记录以兼容既有采集代码；新增 brand_official / web_search_sources / mini_program_sources 三类，并补入关键词矩阵、渠道可达性标注与实测避坑清单。",
+  "focus_brands": [
+    "霸王茶姬",
+    "古茗",
+    "茶百道",
+    "蜜雪冰城",
+    "喜茶"
+  ],
+  "extended_brands": [
+    "瑞幸咖啡",
+    "爷爷不泡茶",
+    "茉莉奶白",
+    "沪上阿姨",
+    "益禾堂",
+    "柠季",
+    "LINLEE林里",
+    "CoCo都可",
+    "茉酸奶",
+    "库迪咖啡",
+    "星巴克",
+    "书亦烧仙草"
+  ],
+  "brand_aliases": {
+    "霸王茶姬": [
+      "CHAGEE",
+      "霸王",
+      "茶姬"
+    ],
+    "古茗": [
+      "goodme",
+      "古茗茶饮点单"
+    ],
+    "茶百道": [
+      "茶百道饮品点单",
+      "茶茶"
+    ],
+    "蜜雪冰城": [
+      "蜜雪",
+      "雪王",
+      "mixue",
+      "mxbc"
+    ],
+    "喜茶": [
+      "喜茶GO",
+      "HEYTEA",
+      "heycha"
+    ]
+  },
+  "source_taxonomy": [
+    {
+      "key": "rss_sources",
+      "name": "① 新闻资讯 RSS",
+      "channel_types": [
+        "rss"
+      ],
+      "count": 15,
+      "collect": "郑州奶茶优惠、品牌促销（注：公开 RSS 端点不稳定，实际主采集由第 ④ 类网页搜索与本地宝/腾讯新闻镜像承担）"
+    },
+    {
+      "key": "brand_official",
+      "name": "② 品牌官方渠道",
+      "channel_types": [
+        "web",
+        "mini_program",
+        "wechat_official_account",
+        "app"
+      ],
+      "count": 32,
+      "collect": "霸王茶姬、古茗、茶百道、蜜雪冰城、喜茶 + 12 个扩展品牌的官网/小程序/公众号/App"
+    },
+    {
+      "key": "official_links",
+      "name": "③ 平台公开活动",
+      "channel_types": [
+        "web",
+        "app"
+      ],
+      "count": 21,
+      "collect": "美团、淘宝闪购、京东外卖、抖音团购，并扩展到点评/饿了么/口碑/支付宝/云闪付/本地宝/媒体转载"
+    },
+    {
+      "key": "web_search_sources",
+      "name": "④ 公开网页搜索",
+      "channel_types": [
+        "search_template",
+        "web"
+      ],
+      "count": 19,
+      "collect": "红包、满减、限时优惠、团购，含 site: 定向与社交平台搜索"
+    },
+    {
+      "key": "mini_program_sources",
+      "name": "⑤ 小程序与私域社交渠道（v1 缺失，本次补齐）",
+      "channel_types": [
+        "mini_program",
+        "wechat_official_account",
+        "wechat_group",
+        "push",
+        "offline_qr",
+        "deep_link",
+        "social"
+      ],
+      "count": 16,
+      "collect": "小程序活动页、公众号关键词回复、企微群、订阅消息、线下二维码、社群线报"
+    }
+  ],
+  "field_definitions": {
+    "access_method": {
+      "browser": "公网浏览器直接打开",
+      "rss_reader": "RSS 阅读器/解析器",
+      "wechat": "需在微信内按 entry 路径打开",
+      "app": "需在 App 内按 entry 路径打开",
+      "wechat_group": "社群内获取",
+      "push": "消息推送",
+      "offline_qr": "线下扫码"
+    },
+    "status": {
+      "ok": "实测 HTTP 200，可正常打开",
+      "ok_rss": "实测 200 且返回合法 RSS 2.0 XML",
+      "needs_login": "页面可达但内容需登录/Cookie",
+      "in_app_only": "无公网 URL，按 entry 在微信/App 内可正常打开",
+      "degraded": "接口可用但内容质量或形态不符预期（如返回 HTML、无关结果），需校验+二次过滤",
+      "unstable": "时通时不通（端点波动、境内网络受限），必须允许失败跳过并降级"
+    }
+  },
+  "collection_policy": {
+    "city_filter": [
+      "郑州",
+      "郑州市",
+      "河南",
+      "郑东新区",
+      "二七",
+      "金水",
+      "中原",
+      "管城",
+      "惠济",
+      "高新区",
+      "经开区",
+      "航空港"
+    ],
+    "zhengzhou_areas": [
+      "二七广场",
+      "德化街",
+      "大上海城",
+      "大卫城",
+      "正弘城",
+      "国贸360",
+      "丹尼斯",
+      "花园路",
+      "农业路",
+      "熙地港",
+      "万象城",
+      "郑东新区CBD",
+      "龙子湖大学城",
+      "高新万达",
+      "二七万达",
+      "中原万达",
+      "惠济万达"
+    ],
+    "deal_keywords": [
+      "红包",
+      "满减",
+      "限时优惠",
+      "团购",
+      "优惠券",
+      "代金券",
+      "买一送一",
+      "买赠",
+      "第二杯半价",
+      "免单",
+      "0.01元",
+      "1元喝",
+      "口令",
+      "口令答案",
+      "神券",
+      "新人券",
+      "首单",
+      "补贴",
+      "立减",
+      "折扣",
+      "9.9",
+      "会员日",
+      "周三",
+      "周五",
+      "签到",
+      "集卡",
+      "抽奖",
+      "消费券",
+      "配送费",
+      "到店立减"
+    ],
+    "high_value_patterns": [
+      "郑州.{0,6}奶茶.{0,6}(免单|优惠|汇总)",
+      "#小程序://",
+      "回复【.+】获取",
+      "口令.{0,10}答案",
+      "每周三 12:00",
+      "限量\\d+份",
+      "活动时间"
+    ],
+    "frequency_hint": {
+      "常态": "每 2-6 小时轮询 RSS 与搜索模板",
+      "周高峰": "周三 11:00-13:00（古茗星期三）、周五（益禾堂）、每月 1 日及品牌会员日加密到 5-10 分钟",
+      "整点": "10:00 / 12:00 / 17:00 / 20:00 为常见开抢时点"
+    },
+    "dedupe": "按 (品牌 + 活动名 + 券面额 + 活动起止日) 生成指纹去重；同一活动在公众号、本地宝、腾讯新闻转载间会重复出现，保留最早且字段最全的一条。",
+    "verification_rule": "凡非 .com 官方域名或第三方聚合站给出的『领券直链』，入库前必须回查品牌小程序；本次实测已发现打折网给出的茶百道券链接为 404。",
+    "compliance": "仅采集公开可访问信息；社群/口令类内容需合规获取，勿高频抓取触发验证码的站点（搜狗微信、什么值得买、知乎）；尊重 robots 与登录态限制。",
+    "rss_fallback": {
+      "trigger": "RSS 请求返回的 Content-Type 非 XML，或响应体前 100 字节不含 <rss / <?xml，或解析出的 item 数为 0",
+      "action": "① 改用 https://www.baidu.com/s?tn=news&word=<关键词> 抓百度资讯；② 改用 web_search_sources 中的 site:new.qq.com / site:zz.bendibao.com 定向检索；③ 直接抓 https://zz.bendibao.com/youhui/ 与本地宝公众号转载稿",
+      "relevance_filter": "RSS item 的 title+description 必须命中 deal_keywords 之一，且含 city_filter 或 focus_brands/extended_brands 之一，否则丢弃（可过滤掉百度百科类噪声）",
+      "parse_rule": "先校验 XML 再解析，切勿把 HTML 当 RSS；对 format=rss 端点设置独立超时与重试上限，避免阻塞主流程"
+    }
+  },
   "rss_sources": [
-    {"id": "news-zhengzhou", "name": "郑州饮品优惠公开资讯", "url": "https://www.bing.com/news/search?q=%E9%83%91%E5%B7%9E%20%E5%A5%B6%E8%8C%B6%20%E4%BC%98%E6%83%A0%20%E6%B4%BB%E5%8A%A8&format=rss", "platform": "公开资讯", "region": "郑州"},
-    {"id": "news-delivery", "name": "外卖红包公开资讯", "url": "https://www.bing.com/news/search?q=%E7%BE%8E%E5%9B%A2%20%E6%B7%98%E5%AE%9D%E9%97%AA%E8%B4%AD%20%E4%BA%AC%E4%B8%9C%E5%A4%96%E5%8D%96%20%E7%BA%A2%E5%8C%85&format=rss", "platform": "公开资讯", "region": "全国"},
-    {"id": "news-brands", "name": "奶茶品牌促销公开资讯", "url": "https://www.bing.com/news/search?q=%E9%9C%B8%E7%8E%8B%E8%8C%B6%E5%A7%AC%20%E5%8F%A4%E8%8C%97%20%E8%8C%B6%E7%99%BE%E9%81%93%20%E5%96%9C%E8%8C%B6%20%E4%BF%83%E9%94%80&format=rss", "platform": "公开资讯", "region": "未知"}
+    {
+      "id": "rss-zz-tea-deal",
+      "name": "郑州奶茶优惠资讯",
+      "platform": "Bing 新闻",
+      "channel_type": "rss",
+      "region": "郑州",
+      "url": "https://www.bing.com/news/search?q=%E9%83%91%E5%B7%9E%20%E5%A5%B6%E8%8C%B6%20%E4%BC%98%E6%83%A0%20%E6%B4%BB%E5%8A%A8&format=rss",
+      "access_method": "rss_reader",
+      "status": "unstable",
+      "brands": [
+        "霸王茶姬",
+        "古茗",
+        "茶百道",
+        "蜜雪冰城",
+        "喜茶"
+      ],
+      "keywords": [
+        "优惠",
+        "满减",
+        "特惠",
+        "活动"
+      ],
+      "collect_content": "郑州本地奶茶促销、免单活动报道",
+      "frequency": "每 2 小时",
+      "priority": "high",
+      "note": "实测 200 且返回合法 RSS 2.0 XML；原 v1 第 1 条，予以保留 ｜复验：该端点间歇性返回 HTML 而非 RSS XML（曾返回合法 XML，当前不稳定）。采集端必须校验 Content-Type 与响应体前 100 字节含 <rss/<?xml，失败则按 collection_policy.rss_fallback 降级。"
+    },
+    {
+      "id": "rss-zz-free",
+      "name": "郑州奶茶免单/买一送一",
+      "platform": "Bing 新闻",
+      "channel_type": "rss",
+      "region": "郑州",
+      "url": "https://www.bing.com/news/search?q=%E9%83%91%E5%B7%9E%20%E5%A5%B6%E8%8C%B6%20%E5%85%8D%E5%8D%95%20%E4%B9%B0%E4%B8%80%E9%80%81%E4%B8%80&format=rss",
+      "access_method": "rss_reader",
+      "status": "unstable",
+      "brands": [
+        "霸王茶姬",
+        "古茗",
+        "茶百道",
+        "蜜雪冰城",
+        "喜茶"
+      ],
+      "keywords": [
+        "免单",
+        "买一送一",
+        "0.01元",
+        "第二杯半价"
+      ],
+      "collect_content": "限时免单、买赠、口令抢券",
+      "frequency": "每 2 小时",
+      "priority": "high",
+      "note": "命中率最高的一类，郑州本地宝汇总稿多由此类词触发 ｜复验：该端点间歇性返回 HTML 而非 RSS XML（曾返回合法 XML，当前不稳定）。采集端必须校验 Content-Type 与响应体前 100 字节含 <rss/<?xml，失败则按 collection_policy.rss_fallback 降级。"
+    },
+    {
+      "id": "rss-zz-groupbuy",
+      "name": "郑州奶茶团购/满减",
+      "platform": "Bing 新闻",
+      "channel_type": "rss",
+      "region": "郑州",
+      "url": "https://www.bing.com/news/search?q=%E9%83%91%E5%B7%9E%20%E5%A5%B6%E8%8C%B6%20%E5%9B%A2%E8%B4%AD%20%E6%BB%A1%E5%87%8F%20%E4%BC%98%E6%83%A0%E5%88%B8&format=rss",
+      "access_method": "rss_reader",
+      "status": "unstable",
+      "brands": [
+        "霸王茶姬",
+        "古茗",
+        "茶百道",
+        "蜜雪冰城",
+        "喜茶"
+      ],
+      "keywords": [
+        "团购",
+        "满减",
+        "代金券",
+        "折扣"
+      ],
+      "collect_content": "平台团购与到店满减",
+      "frequency": "每 6 小时",
+      "priority": "medium",
+      "note": "复验：该端点间歇性返回 HTML 而非 RSS XML（曾返回合法 XML，当前不稳定）。采集端必须校验 Content-Type 与响应体前 100 字节含 <rss/<?xml，失败则按 collection_policy.rss_fallback 降级。"
+    },
+    {
+      "id": "rss-zz-waimai",
+      "name": "郑州外卖红包补贴",
+      "platform": "Bing 新闻",
+      "channel_type": "rss",
+      "region": "郑州",
+      "url": "https://www.bing.com/news/search?q=%E9%83%91%E5%B7%9E%20%E5%A4%96%E5%8D%96%20%E7%BA%A2%E5%8C%85%20%E8%A1%A5%E8%B4%B4%20%E5%A5%B6%E8%8C%B6&format=rss",
+      "access_method": "rss_reader",
+      "status": "unstable",
+      "brands": [
+        "霸王茶姬",
+        "古茗",
+        "茶百道",
+        "蜜雪冰城",
+        "喜茶"
+      ],
+      "keywords": [
+        "红包",
+        "神券",
+        "补贴",
+        "配送费"
+      ],
+      "collect_content": "外卖平台补贴、红包、免配送费",
+      "frequency": "每 2 小时",
+      "priority": "high",
+      "note": "原 v1「外卖红包」条目的本地化版本 ｜复验：该端点间歇性返回 HTML 而非 RSS XML（曾返回合法 XML，当前不稳定）。采集端必须校验 Content-Type 与响应体前 100 字节含 <rss/<?xml，失败则按 collection_policy.rss_fallback 降级。"
+    },
+    {
+      "id": "rss-platform-subsidy",
+      "name": "平台补贴公开资讯",
+      "platform": "Bing 新闻",
+      "channel_type": "rss",
+      "region": "全国",
+      "url": "https://www.bing.com/news/search?q=%E7%BE%8E%E5%9B%A2%20%E6%B7%98%E5%AE%9D%E9%97%AA%E8%B4%AD%20%E4%BA%AC%E4%B8%9C%E5%A4%96%E5%8D%96%20%E7%BA%A2%E5%8C%85%20%E8%A1%A5%E8%B4%B4&format=rss",
+      "access_method": "rss_reader",
+      "status": "unstable",
+      "brands": [
+        "霸王茶姬",
+        "古茗",
+        "茶百道",
+        "蜜雪冰城",
+        "喜茶"
+      ],
+      "keywords": [
+        "淘宝闪购",
+        "京东秒送",
+        "美团",
+        "抖音团购"
+      ],
+      "collect_content": "平台级大促与补贴战",
+      "frequency": "每 6 小时",
+      "priority": "high",
+      "note": "原 v1 第 2 条保留并补全关键词 ｜复验：该端点间歇性返回 HTML 而非 RSS XML（曾返回合法 XML，当前不稳定）。采集端必须校验 Content-Type 与响应体前 100 字节含 <rss/<?xml，失败则按 collection_policy.rss_fallback 降级。"
+    },
+    {
+      "id": "rss-brand-promo",
+      "name": "奶茶品牌促销资讯",
+      "platform": "Bing 新闻",
+      "channel_type": "rss",
+      "region": "全国",
+      "url": "https://www.bing.com/news/search?q=%E9%9C%B8%E7%8E%8B%E8%8C%B6%E5%A7%AC%20%E5%8F%A4%E8%8C%97%20%E8%8C%B6%E7%99%BE%E9%81%93%20%E8%9C%9C%E9%9B%AA%E5%86%B0%E5%9F%8E%20%E5%96%9C%E8%8C%B6%20%E4%BF%83%E9%94%80&format=rss",
+      "access_method": "rss_reader",
+      "status": "unstable",
+      "brands": [
+        "霸王茶姬",
+        "古茗",
+        "茶百道",
+        "蜜雪冰城",
+        "喜茶"
+      ],
+      "keywords": [
+        "新品",
+        "联名",
+        "会员日",
+        "促销"
+      ],
+      "collect_content": "五大品牌全国性活动",
+      "frequency": "每 6 小时",
+      "priority": "high",
+      "note": "原 v1 第 3 条；region 由 未知 修正为 全国 ｜复验：该端点间歇性返回 HTML 而非 RSS XML（曾返回合法 XML，当前不稳定）。采集端必须校验 Content-Type 与响应体前 100 字节含 <rss/<?xml，失败则按 collection_policy.rss_fallback 降级。"
+    },
+    {
+      "id": "rss-bendlbao-zz",
+      "name": "郑州本地宝优惠汇总稿",
+      "platform": "Bing 新闻",
+      "channel_type": "rss",
+      "region": "郑州",
+      "url": "https://www.bing.com/news/search?q=%E9%83%91%E5%B7%9E%E6%9C%AC%E5%9C%B0%E5%AE%9D%20%E5%A5%B6%E8%8C%B6%20%E5%85%8D%E5%8D%95%20%E6%B4%BB%E5%8A%A8%E6%B1%87%E6%80%BB&format=rss",
+      "access_method": "rss_reader",
+      "status": "unstable",
+      "brands": [
+        "霸王茶姬",
+        "古茗",
+        "茶百道",
+        "蜜雪冰城",
+        "喜茶"
+      ],
+      "keywords": [
+        "活动汇总",
+        "参与入口",
+        "小程序"
+      ],
+      "collect_content": "本地宝系列汇总文章（含活动入口）",
+      "frequency": "每 2 小时",
+      "priority": "high",
+      "note": "强烈建议：本地宝汇总稿会直接给出小程序活动短链与口令 ｜复验：该端点间歇性返回 HTML 而非 RSS XML（曾返回合法 XML，当前不稳定）。采集端必须校验 Content-Type 与响应体前 100 字节含 <rss/<?xml，失败则按 collection_policy.rss_fallback 降级。"
+    },
+    {
+      "id": "rss-chagee",
+      "name": "霸王茶姬活动资讯",
+      "platform": "Bing 新闻",
+      "channel_type": "rss",
+      "region": "全国",
+      "url": "https://www.bing.com/news/search?q=%E9%9C%B8%E7%8E%8B%E8%8C%B6%E5%A7%AC%200.01%E5%85%83%20%E5%85%91%E6%8D%A2%E5%88%B8%20%E6%B4%BB%E5%8A%A8&format=rss",
+      "access_method": "rss_reader",
+      "status": "unstable",
+      "brands": [
+        "霸王茶姬"
+      ],
+      "keywords": [
+        "0.01元",
+        "兑换券",
+        "抽奖",
+        "口令"
+      ],
+      "collect_content": "品牌单品活动",
+      "frequency": "每 6 小时",
+      "priority": "medium",
+      "note": "复验：该端点间歇性返回 HTML 而非 RSS XML（曾返回合法 XML，当前不稳定）。采集端必须校验 Content-Type 与响应体前 100 字节含 <rss/<?xml，失败则按 collection_policy.rss_fallback 降级。"
+    },
+    {
+      "id": "rss-guming",
+      "name": "古茗星期三免单资讯",
+      "platform": "Bing 新闻",
+      "channel_type": "rss",
+      "region": "全国",
+      "url": "https://www.bing.com/news/search?q=%E5%8F%A4%E8%8C%97%20%E6%98%9F%E6%9C%9F%E4%B8%89%20%E5%85%8D%E5%8D%95%E5%88%B8%20%E5%8F%A3%E4%BB%A4&format=rss",
+      "access_method": "rss_reader",
+      "status": "unstable",
+      "brands": [
+        "古茗"
+      ],
+      "keywords": [
+        "星期三",
+        "免单券",
+        "口令答案",
+        "12点"
+      ],
+      "collect_content": "每周三 12:00 固定抢券",
+      "frequency": "每周三 11:00 加密",
+      "priority": "high",
+      "note": "周期性活动，建议周三 11:00-13:00 提升采集频率 ｜复验：该端点间歇性返回 HTML 而非 RSS XML（曾返回合法 XML，当前不稳定）。采集端必须校验 Content-Type 与响应体前 100 字节含 <rss/<?xml，失败则按 collection_policy.rss_fallback 降级。"
+    },
+    {
+      "id": "rss-chabaidao",
+      "name": "茶百道买一送一资讯",
+      "platform": "Bing 新闻",
+      "channel_type": "rss",
+      "region": "全国",
+      "url": "https://www.bing.com/news/search?q=%E8%8C%B6%E7%99%BE%E9%81%93%20%E4%B9%B0%E4%B8%80%E9%80%81%E4%B8%80%20%E5%88%AE%E5%88%AE%E4%B9%90%20%E5%88%B8&format=rss",
+      "access_method": "rss_reader",
+      "status": "unstable",
+      "brands": [
+        "茶百道"
+      ],
+      "keywords": [
+        "买一送一",
+        "刮刮乐",
+        "8折券"
+      ],
+      "collect_content": "品牌抽奖/任务领券",
+      "frequency": "每 6 小时",
+      "priority": "medium",
+      "note": "复验：该端点间歇性返回 HTML 而非 RSS XML（曾返回合法 XML，当前不稳定）。采集端必须校验 Content-Type 与响应体前 100 字节含 <rss/<?xml，失败则按 collection_policy.rss_fallback 降级。"
+    },
+    {
+      "id": "rss-mixue",
+      "name": "蜜雪冰城口令免单资讯",
+      "platform": "Bing 新闻",
+      "channel_type": "rss",
+      "region": "全国",
+      "url": "https://www.bing.com/news/search?q=%E8%9C%9C%E9%9B%AA%E5%86%B0%E5%9F%8E%20%E5%AF%B9%E5%8F%A3%E4%BB%A4%20%E5%85%8D%E5%8D%95%20%E9%9B%86%E5%8D%A1&format=rss",
+      "access_method": "rss_reader",
+      "status": "unstable",
+      "brands": [
+        "蜜雪冰城"
+      ],
+      "keywords": [
+        "对口令",
+        "答案",
+        "集卡",
+        "免单券"
+      ],
+      "collect_content": "口令活动与粉丝群抽奖",
+      "frequency": "每 6 小时",
+      "priority": "medium",
+      "note": "复验：该端点间歇性返回 HTML 而非 RSS XML（曾返回合法 XML，当前不稳定）。采集端必须校验 Content-Type 与响应体前 100 字节含 <rss/<?xml，失败则按 collection_policy.rss_fallback 降级。"
+    },
+    {
+      "id": "rss-heytea",
+      "name": "喜茶优惠资讯",
+      "platform": "Bing 新闻",
+      "channel_type": "rss",
+      "region": "全国",
+      "url": "https://www.bing.com/news/search?q=%E5%96%9C%E8%8C%B6%20%E4%B9%B0%E4%B8%80%E9%80%81%E4%B8%80%20%E4%BC%98%E6%83%A0%E5%88%B8%20%E5%96%9C%E8%8C%B6GO&format=rss",
+      "access_method": "rss_reader",
+      "status": "unstable",
+      "brands": [
+        "喜茶"
+      ],
+      "keywords": [
+        "买一送一",
+        "喜茶GO",
+        "会员券"
+      ],
+      "collect_content": "品牌活动与会员券",
+      "frequency": "每 6 小时",
+      "priority": "medium",
+      "note": "复验：该端点间歇性返回 HTML 而非 RSS XML（曾返回合法 XML，当前不稳定）。采集端必须校验 Content-Type 与响应体前 100 字节含 <rss/<?xml，失败则按 collection_policy.rss_fallback 降级。"
+    },
+    {
+      "id": "rss-web-coupon",
+      "name": "网页搜索 RSS：郑州奶茶券",
+      "platform": "Bing 网页",
+      "channel_type": "rss",
+      "region": "郑州",
+      "url": "https://www.bing.com/search?q=%E9%83%91%E5%B7%9E%20%E5%A5%B6%E8%8C%B6%20%E4%BC%98%E6%83%A0%E5%88%B8%20%E7%BA%A2%E5%8C%85%20%E6%BB%A1%E5%87%8F&format=rss",
+      "access_method": "rss_reader",
+      "status": "degraded",
+      "brands": [
+        "霸王茶姬",
+        "古茗",
+        "茶百道",
+        "蜜雪冰城",
+        "喜茶"
+      ],
+      "keywords": [
+        "优惠券",
+        "红包",
+        "满减"
+      ],
+      "collect_content": "把网页搜索结果转成 RSS，覆盖非新闻页面",
+      "frequency": "每 6 小时",
+      "priority": "high",
+      "note": "实测 www.bing.com/search?format=rss 返回合法 XML；注意不要用 cn.bing.com 拼 format=rss ｜复验：可稳定返回合法 RSS XML（10 个 item），但实测结果多为百度百科等无关页面，相关性低；必须按 deal_keywords + city_filter 做二次过滤后再入库。"
+    },
+    {
+      "id": "rss-web-limited",
+      "name": "网页搜索 RSS：限时/团购",
+      "platform": "Bing 网页",
+      "channel_type": "rss",
+      "region": "郑州",
+      "url": "https://www.bing.com/search?q=%E9%83%91%E5%B7%9E%20%E5%A5%B6%E8%8C%B6%20%E9%99%90%E6%97%B6%E4%BC%98%E6%83%A0%20%E5%9B%A2%E8%B4%AD%20%E7%89%B9%E6%83%A0&format=rss",
+      "access_method": "rss_reader",
+      "status": "degraded",
+      "brands": [
+        "霸王茶姬",
+        "古茗",
+        "茶百道",
+        "蜜雪冰城",
+        "喜茶"
+      ],
+      "keywords": [
+        "限时优惠",
+        "团购",
+        "特价"
+      ],
+      "collect_content": "团购与限时活动页面",
+      "frequency": "每 6 小时",
+      "priority": "medium",
+      "note": "复验：可稳定返回合法 RSS XML（10 个 item），但实测结果多为百度百科等无关页面，相关性低；必须按 deal_keywords + city_filter 做二次过滤后再入库。"
+    },
+    {
+      "id": "rss-google-news",
+      "name": "Google 新闻 RSS（境外补充）",
+      "platform": "Google News",
+      "channel_type": "rss",
+      "region": "郑州",
+      "url": "https://news.google.com/rss/search?q=%E9%83%91%E5%B7%9E%20%E5%A5%B6%E8%8C%B6%20%E4%BC%98%E6%83%A0&hl=zh-CN&gl=CN&ceid=CN:zh-Hans",
+      "access_method": "rss_reader",
+      "status": "unstable",
+      "brands": [
+        "霸王茶姬",
+        "古茗",
+        "茶百道",
+        "蜜雪冰城",
+        "喜茶"
+      ],
+      "collect_content": "补充境外索引的中文报道",
+      "frequency": "每日",
+      "priority": "low",
+      "note": "实测返回合法 XML，但境内网络稳定性不保证，建议作为可失败可跳过的备份源 ｜复验：境内网络出现 502 / 连接失败，属不稳定备份源，允许失败跳过。"
+    }
+  ],
+  "brand_official": [
+    {
+      "id": "brand-chagee-site",
+      "name": "霸王茶姬官网",
+      "platform": "霸王茶姬",
+      "channel_type": "web",
+      "region": "全国",
+      "url": "https://www.chagee.com/",
+      "access_method": "browser",
+      "status": "ok",
+      "brands": [
+        "霸王茶姬"
+      ],
+      "keywords": [
+        "官方公告",
+        "新闻",
+        "门店"
+      ],
+      "collect_content": "品牌公告、新品、官方活动与门店查询",
+      "frequency": "每日",
+      "priority": "medium",
+      "note": "官网基本不发券，主要用于校验活动真伪与找小程序入口"
+    },
+    {
+      "id": "brand-chagee-wxapp",
+      "name": "霸王茶姬官方点单小程序",
+      "platform": "霸王茶姬",
+      "channel_type": "mini_program",
+      "region": "郑州",
+      "entry": "微信搜索「霸王茶姬」→ 进入首页活动横幅 / 我的优惠券 / 任务中心",
+      "access_method": "wechat",
+      "status": "in_app_only",
+      "brands": [
+        "霸王茶姬"
+      ],
+      "keywords": [
+        "新人券",
+        "签到",
+        "限时券",
+        "买一送一",
+        "免单券"
+      ],
+      "collect_content": "最核心的券源：新人券包、每日签到、限时活动页、会员券",
+      "frequency": "每日 0 点 / 10 点 / 12 点",
+      "priority": "high",
+      "note": "无公网 URL，但在微信内按此路径可直接打开；活动短链形如 #小程序://霸王茶姬/<动态hash>，需从公众号推文或本地宝关键词回复获取"
+    },
+    {
+      "id": "brand-chagee-gzh",
+      "name": "霸王茶姬微信公众号/服务号",
+      "platform": "霸王茶姬",
+      "channel_type": "wechat_official_account",
+      "region": "全国",
+      "url": "https://weixin.sogou.com/weixin?type=1&query=%E9%9C%B8%E7%8E%8B%E8%8C%B6%E5%A7%AC",
+      "entry": "微信搜索并关注「霸王茶姬CHAGEE」→ 后台回复口令 / 点推文内活动链接",
+      "access_method": "wechat",
+      "status": "ok",
+      "brands": [
+        "霸王茶姬"
+      ],
+      "keywords": [
+        "口令",
+        "推文",
+        "抽奖助手",
+        "活动入口"
+      ],
+      "collect_content": "口令抽奖、推文内活动链接、服务通知推券",
+      "frequency": "每日",
+      "priority": "high",
+      "note": "搜狗微信 type=1 可定位公众号（实测 200）；部分活动须在公众号后台回复指定口令才发链接"
+    },
+    {
+      "id": "brand-chagee-app",
+      "name": "霸王茶姬App / 会员中心",
+      "platform": "霸王茶姬",
+      "channel_type": "app",
+      "region": "郑州",
+      "entry": "霸王茶姬 App → 我的 → 优惠券 / 活动中心",
+      "access_method": "app",
+      "status": "in_app_only",
+      "brands": [
+        "霸王茶姬"
+      ],
+      "keywords": [
+        "会员日",
+        "生日券",
+        "等级权益",
+        "推送"
+      ],
+      "collect_content": "App 端神券中心、会员等级券、Push 推送",
+      "frequency": "每日",
+      "priority": "medium",
+      "note": "与小程序券包通常互通，但存在 App 专属券；建议双端都注册"
+    },
+    {
+      "id": "brand-guming-site",
+      "name": "古茗官网",
+      "platform": "古茗",
+      "channel_type": "web",
+      "region": "全国",
+      "url": "https://www.gumingnc.com/",
+      "access_method": "browser",
+      "status": "ok",
+      "brands": [
+        "古茗"
+      ],
+      "keywords": [
+        "官方公告",
+        "新闻",
+        "门店"
+      ],
+      "collect_content": "品牌公告、新品、官方活动与门店查询",
+      "frequency": "每日",
+      "priority": "medium",
+      "note": "官网基本不发券，主要用于校验活动真伪与找小程序入口"
+    },
+    {
+      "id": "brand-guming-wxapp",
+      "name": "古茗官方点单小程序",
+      "platform": "古茗",
+      "channel_type": "mini_program",
+      "region": "郑州",
+      "entry": "微信搜索「古茗茶饮点单」→ 进入首页活动横幅 / 我的优惠券 / 任务中心",
+      "access_method": "wechat",
+      "status": "in_app_only",
+      "brands": [
+        "古茗"
+      ],
+      "keywords": [
+        "新人券",
+        "签到",
+        "限时券",
+        "买一送一",
+        "免单券"
+      ],
+      "collect_content": "最核心的券源：新人券包、每日签到、限时活动页、会员券",
+      "frequency": "每日 0 点 / 10 点 / 12 点",
+      "priority": "high",
+      "note": "无公网 URL，但在微信内按此路径可直接打开；活动短链形如 #小程序://古茗茶饮点单/<动态hash>，需从公众号推文或本地宝关键词回复获取"
+    },
+    {
+      "id": "brand-guming-gzh",
+      "name": "古茗微信公众号/服务号",
+      "platform": "古茗",
+      "channel_type": "wechat_official_account",
+      "region": "全国",
+      "url": "https://weixin.sogou.com/weixin?type=1&query=%E5%8F%A4%E8%8C%97",
+      "entry": "微信搜索并关注「古茗茶饮」→ 后台回复口令 / 点推文内活动链接",
+      "access_method": "wechat",
+      "status": "ok",
+      "brands": [
+        "古茗"
+      ],
+      "keywords": [
+        "口令",
+        "推文",
+        "抽奖助手",
+        "活动入口"
+      ],
+      "collect_content": "口令抽奖、推文内活动链接、服务通知推券",
+      "frequency": "每日",
+      "priority": "high",
+      "note": "搜狗微信 type=1 可定位公众号（实测 200）；部分活动须在公众号后台回复指定口令才发链接"
+    },
+    {
+      "id": "brand-guming-app",
+      "name": "古茗App / 会员中心",
+      "platform": "古茗",
+      "channel_type": "app",
+      "region": "郑州",
+      "entry": "古茗 App → 活动页面 → 星期三抢免单",
+      "access_method": "app",
+      "status": "in_app_only",
+      "brands": [
+        "古茗"
+      ],
+      "keywords": [
+        "会员日",
+        "生日券",
+        "等级权益",
+        "推送"
+      ],
+      "collect_content": "App 端神券中心、会员等级券、Push 推送",
+      "frequency": "每日",
+      "priority": "medium",
+      "note": "与小程序券包通常互通，但存在 App 专属券；建议双端都注册"
+    },
+    {
+      "id": "brand-chabaidao-site",
+      "name": "茶百道官网",
+      "platform": "茶百道",
+      "channel_type": "web",
+      "region": "全国",
+      "url": "https://www.chabaidao.com/",
+      "access_method": "browser",
+      "status": "ok",
+      "brands": [
+        "茶百道"
+      ],
+      "keywords": [
+        "官方公告",
+        "新闻",
+        "门店"
+      ],
+      "collect_content": "品牌公告、新品、官方活动与门店查询",
+      "frequency": "每日",
+      "priority": "medium",
+      "note": "官网基本不发券，主要用于校验活动真伪与找小程序入口"
+    },
+    {
+      "id": "brand-chabaidao-wxapp",
+      "name": "茶百道官方点单小程序",
+      "platform": "茶百道",
+      "channel_type": "mini_program",
+      "region": "郑州",
+      "entry": "微信搜索「茶百道饮品点单」→ 进入首页活动横幅 / 我的优惠券 / 任务中心",
+      "access_method": "wechat",
+      "status": "in_app_only",
+      "brands": [
+        "茶百道"
+      ],
+      "keywords": [
+        "新人券",
+        "签到",
+        "限时券",
+        "买一送一",
+        "免单券"
+      ],
+      "collect_content": "最核心的券源：新人券包、每日签到、限时活动页、会员券",
+      "frequency": "每日 0 点 / 10 点 / 12 点",
+      "priority": "high",
+      "note": "无公网 URL，但在微信内按此路径可直接打开；活动短链形如 #小程序://茶百道饮品点单/<动态hash>，需从公众号推文或本地宝关键词回复获取"
+    },
+    {
+      "id": "brand-chabaidao-gzh",
+      "name": "茶百道微信公众号/服务号",
+      "platform": "茶百道",
+      "channel_type": "wechat_official_account",
+      "region": "全国",
+      "url": "https://weixin.sogou.com/weixin?type=1&query=%E8%8C%B6%E7%99%BE%E9%81%93",
+      "entry": "微信搜索并关注「茶百道」→ 后台回复口令 / 点推文内活动链接",
+      "access_method": "wechat",
+      "status": "ok",
+      "brands": [
+        "茶百道"
+      ],
+      "keywords": [
+        "口令",
+        "推文",
+        "抽奖助手",
+        "活动入口"
+      ],
+      "collect_content": "口令抽奖、推文内活动链接、服务通知推券",
+      "frequency": "每日",
+      "priority": "high",
+      "note": "搜狗微信 type=1 可定位公众号（实测 200）；部分活动须在公众号后台回复指定口令才发链接"
+    },
+    {
+      "id": "brand-chabaidao-app",
+      "name": "茶百道App / 会员中心",
+      "platform": "茶百道",
+      "channel_type": "app",
+      "region": "郑州",
+      "entry": "茶百道 App → 任务中心 / 我的优惠券",
+      "access_method": "app",
+      "status": "in_app_only",
+      "brands": [
+        "茶百道"
+      ],
+      "keywords": [
+        "会员日",
+        "生日券",
+        "等级权益",
+        "推送"
+      ],
+      "collect_content": "App 端神券中心、会员等级券、Push 推送",
+      "frequency": "每日",
+      "priority": "medium",
+      "note": "与小程序券包通常互通，但存在 App 专属券；建议双端都注册"
+    },
+    {
+      "id": "brand-mixue-site",
+      "name": "蜜雪冰城官网",
+      "platform": "蜜雪冰城",
+      "channel_type": "web",
+      "region": "全国",
+      "url": "https://www.mxbc.com/",
+      "access_method": "browser",
+      "status": "ok",
+      "brands": [
+        "蜜雪冰城"
+      ],
+      "keywords": [
+        "官方公告",
+        "新闻",
+        "门店"
+      ],
+      "collect_content": "品牌公告、新品、官方活动与门店查询",
+      "frequency": "每日",
+      "priority": "medium",
+      "note": "官网基本不发券，主要用于校验活动真伪与找小程序入口"
+    },
+    {
+      "id": "brand-mixue-wxapp",
+      "name": "蜜雪冰城官方点单小程序",
+      "platform": "蜜雪冰城",
+      "channel_type": "mini_program",
+      "region": "郑州",
+      "entry": "微信搜索「蜜雪冰城」→ 进入首页活动横幅 / 我的优惠券 / 任务中心",
+      "access_method": "wechat",
+      "status": "in_app_only",
+      "brands": [
+        "蜜雪冰城"
+      ],
+      "keywords": [
+        "新人券",
+        "签到",
+        "限时券",
+        "买一送一",
+        "免单券"
+      ],
+      "collect_content": "最核心的券源：新人券包、每日签到、限时活动页、会员券",
+      "frequency": "每日 0 点 / 10 点 / 12 点",
+      "priority": "high",
+      "note": "无公网 URL，但在微信内按此路径可直接打开；活动短链形如 #小程序://蜜雪冰城/<动态hash>，需从公众号推文或本地宝关键词回复获取"
+    },
+    {
+      "id": "brand-mixue-gzh",
+      "name": "蜜雪冰城微信公众号/服务号",
+      "platform": "蜜雪冰城",
+      "channel_type": "wechat_official_account",
+      "region": "全国",
+      "url": "https://weixin.sogou.com/weixin?type=1&query=%E8%9C%9C%E9%9B%AA%E5%86%B0%E5%9F%8E",
+      "entry": "微信搜索并关注「蜜雪冰城」→ 后台回复口令 / 点推文内活动链接",
+      "access_method": "wechat",
+      "status": "ok",
+      "brands": [
+        "蜜雪冰城"
+      ],
+      "keywords": [
+        "口令",
+        "推文",
+        "抽奖助手",
+        "活动入口"
+      ],
+      "collect_content": "口令抽奖、推文内活动链接、服务通知推券",
+      "frequency": "每日",
+      "priority": "high",
+      "note": "搜狗微信 type=1 可定位公众号（实测 200）；部分活动须在公众号后台回复指定口令才发链接"
+    },
+    {
+      "id": "brand-mixue-app",
+      "name": "蜜雪冰城App / 会员中心",
+      "platform": "蜜雪冰城",
+      "channel_type": "app",
+      "region": "郑州",
+      "entry": "蜜雪冰城 App → 神券中心 / 签到领券",
+      "access_method": "app",
+      "status": "in_app_only",
+      "brands": [
+        "蜜雪冰城"
+      ],
+      "keywords": [
+        "会员日",
+        "生日券",
+        "等级权益",
+        "推送"
+      ],
+      "collect_content": "App 端神券中心、会员等级券、Push 推送",
+      "frequency": "每日",
+      "priority": "medium",
+      "note": "与小程序券包通常互通，但存在 App 专属券；建议双端都注册"
+    },
+    {
+      "id": "brand-heytea-site",
+      "name": "喜茶官网",
+      "platform": "喜茶",
+      "channel_type": "web",
+      "region": "全国",
+      "url": "https://heycha.com/",
+      "access_method": "browser",
+      "status": "ok",
+      "brands": [
+        "喜茶"
+      ],
+      "keywords": [
+        "官方公告",
+        "新闻",
+        "门店"
+      ],
+      "collect_content": "品牌公告、新品、官方活动与门店查询",
+      "frequency": "每日",
+      "priority": "medium",
+      "note": "官网基本不发券，主要用于校验活动真伪与找小程序入口"
+    },
+    {
+      "id": "brand-heytea-wxapp",
+      "name": "喜茶官方点单小程序",
+      "platform": "喜茶",
+      "channel_type": "mini_program",
+      "region": "郑州",
+      "entry": "微信搜索「喜茶GO」→ 进入首页活动横幅 / 我的优惠券 / 任务中心",
+      "access_method": "wechat",
+      "status": "in_app_only",
+      "brands": [
+        "喜茶"
+      ],
+      "keywords": [
+        "新人券",
+        "签到",
+        "限时券",
+        "买一送一",
+        "免单券"
+      ],
+      "collect_content": "最核心的券源：新人券包、每日签到、限时活动页、会员券",
+      "frequency": "每日 0 点 / 10 点 / 12 点",
+      "priority": "high",
+      "note": "无公网 URL，但在微信内按此路径可直接打开；活动短链形如 #小程序://喜茶GO/<动态hash>，需从公众号推文或本地宝关键词回复获取"
+    },
+    {
+      "id": "brand-heytea-gzh",
+      "name": "喜茶微信公众号/服务号",
+      "platform": "喜茶",
+      "channel_type": "wechat_official_account",
+      "region": "全国",
+      "url": "https://weixin.sogou.com/weixin?type=1&query=%E5%96%9C%E8%8C%B6",
+      "entry": "微信搜索并关注「喜茶」→ 后台回复口令 / 点推文内活动链接",
+      "access_method": "wechat",
+      "status": "ok",
+      "brands": [
+        "喜茶"
+      ],
+      "keywords": [
+        "口令",
+        "推文",
+        "抽奖助手",
+        "活动入口"
+      ],
+      "collect_content": "口令抽奖、推文内活动链接、服务通知推券",
+      "frequency": "每日",
+      "priority": "high",
+      "note": "搜狗微信 type=1 可定位公众号（实测 200）；部分活动须在公众号后台回复指定口令才发链接"
+    },
+    {
+      "id": "brand-heytea-app",
+      "name": "喜茶App / 会员中心",
+      "platform": "喜茶",
+      "channel_type": "app",
+      "region": "郑州",
+      "entry": "喜茶 GO App → 我的 → 礼盒图标（会员福利）",
+      "access_method": "app",
+      "status": "in_app_only",
+      "brands": [
+        "喜茶"
+      ],
+      "keywords": [
+        "会员日",
+        "生日券",
+        "等级权益",
+        "推送"
+      ],
+      "collect_content": "App 端神券中心、会员等级券、Push 推送",
+      "frequency": "每日",
+      "priority": "medium",
+      "note": "与小程序券包通常互通，但存在 App 专属券；建议双端都注册"
+    },
+    {
+      "id": "brand-ext-00",
+      "name": "瑞幸咖啡小程序",
+      "platform": "瑞幸咖啡",
+      "channel_type": "mini_program",
+      "region": "郑州",
+      "entry": "微信搜索「瑞幸咖啡」→ 首页活动页 / 我的优惠券",
+      "access_method": "wechat",
+      "status": "in_app_only",
+      "brands": [
+        "瑞幸咖啡"
+      ],
+      "collect_content": "免费/0元兑换券、口令抽奖",
+      "frequency": "每日",
+      "priority": "medium",
+      "note": "扩展品牌：郑州本地宝汇总稿中高频出现，公众号「郑州本地宝」回复「瑞幸咖啡」可获取其活动入口"
+    },
+    {
+      "id": "brand-ext-01",
+      "name": "爷爷不泡茶小程序",
+      "platform": "爷爷不泡茶",
+      "channel_type": "mini_program",
+      "region": "郑州",
+      "entry": "微信搜索「爷爷不泡茶」→ 首页活动页 / 我的优惠券",
+      "access_method": "wechat",
+      "status": "in_app_only",
+      "brands": [
+        "爷爷不泡茶"
+      ],
+      "collect_content": "集能量开宝箱、免单券",
+      "frequency": "每日",
+      "priority": "medium",
+      "note": "扩展品牌：郑州本地宝汇总稿中高频出现，公众号「郑州本地宝」回复「爷爷不泡茶」可获取其活动入口"
+    },
+    {
+      "id": "brand-ext-02",
+      "name": "茉莉奶白小程序",
+      "platform": "茉莉奶白",
+      "channel_type": "mini_program",
+      "region": "郑州",
+      "entry": "微信搜索「茉莉奶白」→ 首页活动页 / 我的优惠券",
+      "access_method": "wechat",
+      "status": "in_app_only",
+      "brands": [
+        "茉莉奶白"
+      ],
+      "collect_content": "抽奖、买一送一券",
+      "frequency": "每日",
+      "priority": "medium",
+      "note": "扩展品牌：郑州本地宝汇总稿中高频出现，公众号「郑州本地宝」回复「茉莉奶白」可获取其活动入口"
+    },
+    {
+      "id": "brand-ext-03",
+      "name": "沪上阿姨小程序",
+      "platform": "沪上阿姨",
+      "channel_type": "mini_program",
+      "region": "郑州",
+      "entry": "微信搜索「沪上阿姨」→ 首页活动页 / 我的优惠券",
+      "access_method": "wechat",
+      "status": "in_app_only",
+      "brands": [
+        "沪上阿姨"
+      ],
+      "collect_content": "集卡、1元券",
+      "frequency": "每日",
+      "priority": "medium",
+      "note": "扩展品牌：郑州本地宝汇总稿中高频出现，公众号「郑州本地宝」回复「沪上阿姨」可获取其活动入口"
+    },
+    {
+      "id": "brand-ext-04",
+      "name": "益禾堂小程序",
+      "platform": "益禾堂",
+      "channel_type": "mini_program",
+      "region": "郑州",
+      "entry": "微信搜索「益禾堂手机点单」→ 首页活动页 / 我的优惠券",
+      "access_method": "wechat",
+      "status": "in_app_only",
+      "brands": [
+        "益禾堂"
+      ],
+      "collect_content": "每周五免单抽奖、签到",
+      "frequency": "每日",
+      "priority": "medium",
+      "note": "扩展品牌：郑州本地宝汇总稿中高频出现，公众号「郑州本地宝」回复「益禾堂」可获取其活动入口"
+    },
+    {
+      "id": "brand-ext-05",
+      "name": "柠季小程序",
+      "platform": "柠季",
+      "channel_type": "mini_program",
+      "region": "郑州",
+      "entry": "微信搜索「柠季柠檬茶专门店」→ 首页活动页 / 我的优惠券",
+      "access_method": "wechat",
+      "status": "in_app_only",
+      "brands": [
+        "柠季"
+      ],
+      "collect_content": "任务抽奖、新品免单",
+      "frequency": "每日",
+      "priority": "medium",
+      "note": "扩展品牌：郑州本地宝汇总稿中高频出现，公众号「郑州本地宝」回复「柠季」可获取其活动入口"
+    },
+    {
+      "id": "brand-ext-06",
+      "name": "LINLEE林里小程序",
+      "platform": "LINLEE林里",
+      "channel_type": "mini_program",
+      "region": "郑州",
+      "entry": "微信搜索「LINLEE林里柠檬茶」→ 首页活动页 / 我的优惠券",
+      "access_method": "wechat",
+      "status": "in_app_only",
+      "brands": [
+        "LINLEE林里"
+      ],
+      "collect_content": "企微福利官专属抽奖",
+      "frequency": "每日",
+      "priority": "medium",
+      "note": "扩展品牌：郑州本地宝汇总稿中高频出现，公众号「郑州本地宝」回复「LINLEE林里」可获取其活动入口"
+    },
+    {
+      "id": "brand-ext-07",
+      "name": "CoCo都可小程序",
+      "platform": "CoCo都可",
+      "channel_type": "mini_program",
+      "region": "郑州",
+      "entry": "微信搜索「coco点单+」→ 首页活动页 / 我的优惠券",
+      "access_method": "wechat",
+      "status": "in_app_only",
+      "brands": [
+        "CoCo都可"
+      ],
+      "collect_content": "做任务赢免单",
+      "frequency": "每日",
+      "priority": "medium",
+      "note": "扩展品牌：郑州本地宝汇总稿中高频出现，公众号「郑州本地宝」回复「CoCo都可」可获取其活动入口"
+    },
+    {
+      "id": "brand-ext-08",
+      "name": "茉酸奶小程序",
+      "platform": "茉酸奶",
+      "channel_type": "mini_program",
+      "region": "郑州",
+      "entry": "微信搜索「茉酸奶」→ 首页活动页 / 我的优惠券",
+      "access_method": "wechat",
+      "status": "in_app_only",
+      "brands": [
+        "茉酸奶"
+      ],
+      "collect_content": "公众号口令抽奖",
+      "frequency": "每日",
+      "priority": "medium",
+      "note": "扩展品牌：郑州本地宝汇总稿中高频出现，公众号「郑州本地宝」回复「茉酸奶」可获取其活动入口"
+    },
+    {
+      "id": "brand-ext-09",
+      "name": "库迪咖啡小程序",
+      "platform": "库迪咖啡",
+      "channel_type": "mini_program",
+      "region": "郑州",
+      "entry": "微信搜索「Cotti Coffee」→ 首页活动页 / 我的优惠券",
+      "access_method": "wechat",
+      "status": "in_app_only",
+      "brands": [
+        "库迪咖啡"
+      ],
+      "collect_content": "9.9 元尝鲜、免单抽",
+      "frequency": "每日",
+      "priority": "medium",
+      "note": "扩展品牌：郑州本地宝汇总稿中高频出现，公众号「郑州本地宝」回复「库迪咖啡」可获取其活动入口"
+    },
+    {
+      "id": "brand-ext-10",
+      "name": "星巴克小程序",
+      "platform": "星巴克",
+      "channel_type": "mini_program",
+      "region": "郑州",
+      "entry": "微信搜索「星巴克」→ 首页活动页 / 我的优惠券",
+      "access_method": "wechat",
+      "status": "in_app_only",
+      "brands": [
+        "星巴克"
+      ],
+      "collect_content": "小程序抽奖、1 元喝",
+      "frequency": "每日",
+      "priority": "medium",
+      "note": "扩展品牌：郑州本地宝汇总稿中高频出现，公众号「郑州本地宝」回复「星巴克」可获取其活动入口"
+    },
+    {
+      "id": "brand-ext-11",
+      "name": "书亦烧仙草小程序",
+      "platform": "书亦烧仙草",
+      "channel_type": "mini_program",
+      "region": "郑州",
+      "entry": "微信搜索「书亦烧仙草」→ 首页活动页 / 我的优惠券",
+      "access_method": "wechat",
+      "status": "in_app_only",
+      "brands": [
+        "书亦烧仙草"
+      ],
+      "collect_content": "会员日、买一送一",
+      "frequency": "每日",
+      "priority": "medium",
+      "note": "扩展品牌：郑州本地宝汇总稿中高频出现，公众号「郑州本地宝」回复「书亦烧仙草」可获取其活动入口"
+    }
   ],
   "official_links": [
-    {"platform": "美团外卖", "label": "美团公开入口", "url": "https://www.meituan.com/"},
-    {"platform": "淘宝闪购", "label": "淘宝公开入口", "url": "https://www.taobao.com/"},
-    {"platform": "京东外卖", "label": "京东公开入口", "url": "https://www.jd.com/"},
-    {"platform": "抖音团购", "label": "抖音公开入口", "url": "https://www.douyin.com/"}
+    {
+      "id": "plat-meituan-waimai",
+      "name": "美团外卖",
+      "platform": "美团",
+      "channel_type": "web",
+      "region": "郑州",
+      "url": "https://waimai.meituan.com/",
+      "entry": "App/网页定位郑州 → 首页「神券」「天天神券」「奶茶频道」",
+      "access_method": "browser",
+      "status": "ok",
+      "brands": [
+        "霸王茶姬",
+        "古茗",
+        "茶百道",
+        "蜜雪冰城",
+        "喜茶"
+      ],
+      "keywords": [
+        "神券",
+        "满减",
+        "配送费",
+        "首单"
+      ],
+      "collect_content": "外卖红包、店铺满减、奶茶品类券",
+      "frequency": "每日",
+      "priority": "high",
+      "note": "实测 200；H5 备用入口 https://h5.waimai.meituan.com/"
+    },
+    {
+      "id": "plat-meituan",
+      "name": "美团（到店/团购）",
+      "platform": "美团",
+      "channel_type": "web",
+      "region": "郑州",
+      "url": "https://www.meituan.com/",
+      "entry": "首页 → 美食/奶茶 → 团购套餐",
+      "access_method": "browser",
+      "status": "ok",
+      "brands": [
+        "霸王茶姬",
+        "古茗",
+        "茶百道",
+        "蜜雪冰城",
+        "喜茶"
+      ],
+      "keywords": [
+        "团购",
+        "套餐",
+        "到店券"
+      ],
+      "collect_content": "到店团购套餐与代金券",
+      "frequency": "每日",
+      "priority": "medium",
+      "note": "实测 200"
+    },
+    {
+      "id": "plat-dianping",
+      "name": "大众点评",
+      "platform": "大众点评",
+      "channel_type": "web",
+      "region": "郑州",
+      "url": "https://www.dianping.com/",
+      "entry": "郑州站 → 奶茶/饮品 → 团购与优惠",
+      "access_method": "browser",
+      "status": "needs_login",
+      "brands": [
+        "霸王茶姬",
+        "古茗",
+        "茶百道",
+        "蜜雪冰城",
+        "喜茶"
+      ],
+      "keywords": [
+        "团购",
+        "必吃榜",
+        "折扣"
+      ],
+      "collect_content": "到店团购、榜单与店铺券",
+      "frequency": "每日",
+      "priority": "medium",
+      "note": "实测会跳转美团验证页 verify.meituan.com，需登录/客户端"
+    },
+    {
+      "id": "plat-taobao-sg",
+      "name": "淘宝闪购（原饿了么）",
+      "platform": "淘宝闪购",
+      "channel_type": "web",
+      "region": "郑州",
+      "url": "https://taobaoshangou.ele.me/",
+      "entry": "淘宝 App → 闪购 / 饿了么 App → 奶茶频道 → 超级吃货卡",
+      "access_method": "browser",
+      "status": "ok",
+      "brands": [
+        "霸王茶姬",
+        "古茗",
+        "茶百道",
+        "蜜雪冰城",
+        "喜茶"
+      ],
+      "keywords": [
+        "闪购",
+        "红包",
+        "免单",
+        "补贴"
+      ],
+      "collect_content": "闪购红包、品牌免单日、奶茶品类补贴",
+      "frequency": "每日",
+      "priority": "high",
+      "note": "重要：https://www.ele.me/ 实测 302 到本地址，饿了么已并入淘宝闪购；v1 的 taobao.com 仅为主站，务必补上此入口"
+    },
+    {
+      "id": "plat-taobao",
+      "name": "淘宝主站",
+      "platform": "淘宝",
+      "channel_type": "web",
+      "region": "全国",
+      "url": "https://www.taobao.com/",
+      "entry": "淘宝 App → 首页「闪购」Tab",
+      "access_method": "browser",
+      "status": "ok",
+      "brands": [
+        "霸王茶姬",
+        "古茗",
+        "茶百道",
+        "蜜雪冰城",
+        "喜茶"
+      ],
+      "keywords": [
+        "闪购",
+        "88VIP",
+        "红包"
+      ],
+      "collect_content": "平台级大促、88VIP 券",
+      "frequency": "每日",
+      "priority": "medium",
+      "note": "v1 原有条目保留"
+    },
+    {
+      "id": "plat-eleme-app",
+      "name": "饿了么 App",
+      "platform": "饿了么",
+      "channel_type": "app",
+      "region": "郑州",
+      "entry": "饿了么 App → 首页红包 / 奶茶频道 / 超级吃货卡",
+      "access_method": "app",
+      "status": "in_app_only",
+      "brands": [
+        "霸王茶姬",
+        "古茗",
+        "茶百道",
+        "蜜雪冰城",
+        "喜茶"
+      ],
+      "keywords": [
+        "吃货卡",
+        "红包",
+        "满减"
+      ],
+      "collect_content": "与淘宝闪购券池部分独立",
+      "frequency": "每日",
+      "priority": "medium"
+    },
+    {
+      "id": "plat-jd",
+      "name": "京东外卖 / 京东秒送",
+      "platform": "京东",
+      "channel_type": "web",
+      "region": "全国",
+      "url": "https://www.jd.com/",
+      "entry": "京东 App → 首页「秒送」/「外卖」频道 → 奶茶",
+      "access_method": "browser",
+      "status": "ok",
+      "brands": [
+        "霸王茶姬",
+        "古茗",
+        "茶百道",
+        "蜜雪冰城",
+        "喜茶"
+      ],
+      "keywords": [
+        "秒送",
+        "外卖",
+        "百亿补贴"
+      ],
+      "collect_content": "京东外卖补贴、秒送奶茶券",
+      "frequency": "每日",
+      "priority": "high",
+      "note": "v1 原有条目保留；注意 waimai.jd.com / song.jd.com / takeaway.jd.com 三个猜测域名实测均跳 error2.aspx，不可作为固定入口"
+    },
+    {
+      "id": "plat-jd-app",
+      "name": "京东 App 秒送频道",
+      "platform": "京东",
+      "channel_type": "app",
+      "region": "郑州",
+      "entry": "京东 App → 秒送 → 餐饮/奶茶 → 领券中心",
+      "access_method": "app",
+      "status": "in_app_only",
+      "brands": [
+        "霸王茶姬",
+        "古茗",
+        "茶百道",
+        "蜜雪冰城",
+        "喜茶"
+      ],
+      "keywords": [
+        "秒送",
+        "满减",
+        "首单"
+      ],
+      "collect_content": "外卖红包与品牌首单券",
+      "frequency": "每日",
+      "priority": "high",
+      "note": "京东外卖几乎无独立网页入口，实际采集需落在此 App 频道"
+    },
+    {
+      "id": "plat-douyin-life",
+      "name": "抖音生活服务（团购）",
+      "platform": "抖音团购",
+      "channel_type": "web",
+      "region": "郑州",
+      "url": "https://life.douyin.com/",
+      "entry": "抖音 App → 同城/团购 → 郑州 → 奶茶",
+      "access_method": "browser",
+      "status": "ok",
+      "brands": [
+        "霸王茶姬",
+        "古茗",
+        "茶百道",
+        "蜜雪冰城",
+        "喜茶"
+      ],
+      "keywords": [
+        "团购",
+        "套餐",
+        "直播",
+        "达人券"
+      ],
+      "collect_content": "低价团购套餐、直播间券、探店活动",
+      "frequency": "每日",
+      "priority": "high",
+      "note": "实测 200"
+    },
+    {
+      "id": "plat-douyin",
+      "name": "抖音主站",
+      "platform": "抖音",
+      "channel_type": "web",
+      "region": "全国",
+      "url": "https://www.douyin.com/",
+      "entry": "搜索「郑州奶茶优惠」→ 视频/直播/团购挂载",
+      "access_method": "browser",
+      "status": "ok",
+      "brands": [
+        "霸王茶姬",
+        "古茗",
+        "茶百道",
+        "蜜雪冰城",
+        "喜茶"
+      ],
+      "keywords": [
+        "团购",
+        "直播",
+        "探店"
+      ],
+      "collect_content": "达人探店与团购挂载",
+      "frequency": "每日",
+      "priority": "medium",
+      "note": "v1 原有条目保留；搜索页 https://www.douyin.com/search/<关键词> 实测 200"
+    },
+    {
+      "id": "plat-meituan-h5",
+      "name": "美团外卖 H5 活动页",
+      "platform": "美团",
+      "channel_type": "web",
+      "region": "郑州",
+      "url": "https://h5.waimai.meituan.com/",
+      "entry": "定位郑州后进入领券中心",
+      "access_method": "browser",
+      "status": "ok",
+      "brands": [
+        "霸王茶姬",
+        "古茗",
+        "茶百道",
+        "蜜雪冰城",
+        "喜茶"
+      ],
+      "keywords": [
+        "领券中心",
+        "红包"
+      ],
+      "collect_content": "轻量 H5 领券页，适合自动采集",
+      "frequency": "每日",
+      "priority": "medium",
+      "note": "实测 200，比主站更适合做落地页解析"
+    },
+    {
+      "id": "plat-koubei",
+      "name": "口碑（支付宝到店）",
+      "platform": "口碑",
+      "channel_type": "web",
+      "region": "郑州",
+      "url": "https://www.koubei.com/",
+      "entry": "支付宝 App → 口碑/消费券 → 郑州",
+      "access_method": "browser",
+      "status": "ok",
+      "brands": [
+        "霸王茶姬",
+        "古茗",
+        "茶百道",
+        "蜜雪冰城",
+        "喜茶"
+      ],
+      "keywords": [
+        "到店券",
+        "消费券",
+        "套餐"
+      ],
+      "collect_content": "到店团购与支付宝消费券",
+      "frequency": "每周",
+      "priority": "medium",
+      "note": "实测 200"
+    },
+    {
+      "id": "plat-alipay",
+      "name": "支付宝（消费券/支付有优惠）",
+      "platform": "支付宝",
+      "channel_type": "web",
+      "region": "郑州",
+      "url": "https://www.alipay.com/",
+      "entry": "支付宝 App → 卡包/消费券/支付有优惠 → 郑州",
+      "access_method": "browser",
+      "status": "ok",
+      "brands": [
+        "霸王茶姬",
+        "古茗",
+        "茶百道",
+        "蜜雪冰城",
+        "喜茶"
+      ],
+      "keywords": [
+        "消费券",
+        "红包",
+        "支付有优惠"
+      ],
+      "collect_content": "政府消费券、支付立减、品牌券",
+      "frequency": "每周",
+      "priority": "medium",
+      "note": "政府/平台消费券常限定郑州，需单独跟踪"
+    },
+    {
+      "id": "plat-unionpay",
+      "name": "云闪付（银行系优惠）",
+      "platform": "云闪付",
+      "channel_type": "web",
+      "region": "郑州",
+      "url": "https://cn.unionpay.com/upowhtml/cn/templates/index/index.html",
+      "entry": "云闪付 App → 优惠/郑州本地 → 奶茶满减",
+      "access_method": "browser",
+      "status": "ok",
+      "brands": [
+        "霸王茶姬",
+        "古茗",
+        "茶百道",
+        "蜜雪冰城",
+        "喜茶"
+      ],
+      "keywords": [
+        "满减",
+        "周三",
+        "周五",
+        "银行日"
+      ],
+      "collect_content": "银联与银行联合的奶茶满减日",
+      "frequency": "每周",
+      "priority": "medium",
+      "note": "官网 200；youhui.95516.com 与 www.95516.com 实测 SSL/403 不通，建议只走 App"
+    },
+    {
+      "id": "plat-wxpay",
+      "name": "微信支付「支付有优惠」",
+      "platform": "微信支付",
+      "channel_type": "app",
+      "region": "郑州",
+      "entry": "微信 → 我 → 服务 → 钱包 → 支付有优惠 / 微信支付分",
+      "access_method": "app",
+      "status": "in_app_only",
+      "brands": [
+        "霸王茶姬",
+        "古茗",
+        "茶百道",
+        "蜜雪冰城",
+        "喜茶"
+      ],
+      "keywords": [
+        "立减金",
+        "金币兑换",
+        "摇免单"
+      ],
+      "collect_content": "支付立减金、金币兑换品牌券",
+      "frequency": "每周",
+      "priority": "medium",
+      "note": "无公网 URL，但入口稳定可达"
+    },
+    {
+      "id": "plat-zz-bendibao",
+      "name": "郑州本地宝·优惠频道",
+      "platform": "本地宝",
+      "channel_type": "web",
+      "region": "郑州",
+      "url": "https://zz.bendibao.com/youhui/",
+      "entry": "栏目内「郑州特惠优选」「奶茶免单汇总」",
+      "access_method": "browser",
+      "status": "ok",
+      "brands": [
+        "霸王茶姬",
+        "古茗",
+        "茶百道",
+        "蜜雪冰城",
+        "喜茶"
+      ],
+      "keywords": [
+        "特惠",
+        "免单汇总",
+        "消费券"
+      ],
+      "collect_content": "郑州本地优惠汇总、消费券、活动入口",
+      "frequency": "每日",
+      "priority": "high",
+      "note": "实测 200。这是郑州地区最贴近需求的网页聚合源，优先级最高"
+    },
+    {
+      "id": "plat-bendibao",
+      "name": "本地宝全国站",
+      "platform": "本地宝",
+      "channel_type": "web",
+      "region": "全国",
+      "url": "https://www.bendibao.com/",
+      "entry": "切换城市到郑州",
+      "access_method": "browser",
+      "status": "ok",
+      "brands": [
+        "霸王茶姬",
+        "古茗",
+        "茶百道",
+        "蜜雪冰城",
+        "喜茶"
+      ],
+      "keywords": [
+        "城市站",
+        "汇总"
+      ],
+      "collect_content": "本地宝城市站索引",
+      "frequency": "每周",
+      "priority": "low",
+      "note": "实测 200（302 到 http://www.bendibao.com/index.htm）"
+    },
+    {
+      "id": "plat-smzdm",
+      "name": "什么值得买·优惠聚合",
+      "platform": "什么值得买",
+      "channel_type": "web",
+      "region": "全国",
+      "url": "https://www.smzdm.com/",
+      "entry": "搜索「奶茶 优惠券」→ 好价/社区",
+      "access_method": "browser",
+      "status": "degraded",
+      "brands": [
+        "霸王茶姬",
+        "古茗",
+        "茶百道",
+        "蜜雪冰城",
+        "喜茶"
+      ],
+      "keywords": [
+        "好价",
+        "爆料",
+        "神券"
+      ],
+      "collect_content": "网友爆料的奶茶券与平台补贴",
+      "frequency": "每日",
+      "priority": "medium",
+      "note": "首页 200；搜索页返回 202 且带反爬脚本，feed.smzdm.com 403、/feed 404 —— 该站无可用 RSS，只能网页降级采集"
+    },
+    {
+      "id": "plat-dazhe",
+      "name": "打折网·领券攻略聚合",
+      "platform": "打折网",
+      "channel_type": "web",
+      "region": "全国",
+      "url": "https://www.dazhe.com/",
+      "entry": "站内搜索品牌名 + 优惠券",
+      "access_method": "browser",
+      "status": "ok",
+      "brands": [
+        "霸王茶姬",
+        "古茗",
+        "茶百道",
+        "蜜雪冰城",
+        "喜茶"
+      ],
+      "keywords": [
+        "领券入口",
+        "隐藏券"
+      ],
+      "collect_content": "领券路径攻略",
+      "frequency": "每日",
+      "priority": "low",
+      "note": "实测 200；但内容疑似批量生成，实测其给出的 chabaidao.com/member/coupon 为 404，所有「券链接」必须二次核验，不可直接入库"
+    },
+    {
+      "id": "plat-qq-news",
+      "name": "腾讯新闻（本地宝转载）",
+      "platform": "腾讯新闻",
+      "channel_type": "web",
+      "region": "郑州",
+      "url": "https://news.qq.com/",
+      "entry": "搜索「郑州 奶茶 免单活动汇总」",
+      "access_method": "browser",
+      "status": "ok",
+      "brands": [
+        "霸王茶姬",
+        "古茗",
+        "茶百道",
+        "蜜雪冰城",
+        "喜茶"
+      ],
+      "keywords": [
+        "活动汇总",
+        "参与入口"
+      ],
+      "collect_content": "郑州本地宝汇总稿的公开网页镜像",
+      "frequency": "每日",
+      "priority": "high",
+      "note": "new.qq.com/rain/a/ 系列文章可被公网搜索直接抓取，是绕过微信封闭生态的关键渠道"
+    },
+    {
+      "id": "plat-163-news",
+      "name": "网易新闻（本地宝转载）",
+      "platform": "网易新闻",
+      "channel_type": "web",
+      "region": "郑州",
+      "url": "https://news.163.com/",
+      "entry": "搜索「郑州 奶茶 免单 汇总」",
+      "access_method": "browser",
+      "status": "ok",
+      "brands": [
+        "霸王茶姬",
+        "古茗",
+        "茶百道",
+        "蜜雪冰城",
+        "喜茶"
+      ],
+      "keywords": [
+        "活动汇总",
+        "入口"
+      ],
+      "collect_content": "活动汇总稿镜像",
+      "frequency": "每日",
+      "priority": "medium",
+      "note": "c.m.163.com 移动页实测 200"
+    }
+  ],
+  "web_search_sources": [
+    {
+      "id": "web-bing-keyword",
+      "name": "Bing 网页搜索·优惠词矩阵",
+      "platform": "Bing",
+      "channel_type": "search_template",
+      "region": "郑州",
+      "url": "https://cn.bing.com/search?q=%E9%83%91%E5%B7%9E%20%E5%A5%B6%E8%8C%B6%20%E7%BA%A2%E5%8C%85%20%E6%BB%A1%E5%87%8F%20%E9%99%90%E6%97%B6%E4%BC%98%E6%83%A0%20%E5%9B%A2%E8%B4%AD",
+      "access_method": "browser",
+      "status": "ok",
+      "brands": [
+        "霸王茶姬",
+        "古茗",
+        "茶百道",
+        "蜜雪冰城",
+        "喜茶"
+      ],
+      "keywords": [
+        "红包",
+        "满减",
+        "限时优惠",
+        "团购"
+      ],
+      "collect_content": "综合网页结果",
+      "frequency": "每 2 小时",
+      "priority": "high",
+      "note": "模板：https://cn.bing.com/search?q=<URL编码关键词>；实测 200"
+    },
+    {
+      "id": "web-bing-site-qq",
+      "name": "Bing 定向·腾讯新闻汇总稿",
+      "platform": "Bing",
+      "channel_type": "search_template",
+      "region": "郑州",
+      "url": "https://cn.bing.com/search?q=site%3Anew.qq.com%20%E9%83%91%E5%B7%9E%20%E5%A5%B6%E8%8C%B6%20%E5%85%8D%E5%8D%95%20%E6%B4%BB%E5%8A%A8%E6%B1%87%E6%80%BB",
+      "access_method": "browser",
+      "status": "ok",
+      "brands": [
+        "霸王茶姬",
+        "古茗",
+        "茶百道",
+        "蜜雪冰城",
+        "喜茶"
+      ],
+      "keywords": [
+        "汇总",
+        "免单",
+        "入口"
+      ],
+      "collect_content": "抓本地宝汇总稿的公开镜像，含小程序短链与口令",
+      "frequency": "每 2 小时",
+      "priority": "high",
+      "note": "强烈建议：这是把微信公众号内容转成可采集网页的最佳路径"
+    },
+    {
+      "id": "web-bing-site-wx",
+      "name": "Bing 定向·微信公众号文章",
+      "platform": "Bing",
+      "channel_type": "search_template",
+      "region": "郑州",
+      "url": "https://cn.bing.com/search?q=site%3Amp.weixin.qq.com%20%E9%83%91%E5%B7%9E%20%E5%A5%B6%E8%8C%B6%20%E4%BC%98%E6%83%A0%20%E5%85%A5%E5%8F%A3",
+      "access_method": "browser",
+      "status": "ok",
+      "brands": [
+        "霸王茶姬",
+        "古茗",
+        "茶百道",
+        "蜜雪冰城",
+        "喜茶"
+      ],
+      "keywords": [
+        "公众号",
+        "活动入口"
+      ],
+      "collect_content": "公众号推文公开页",
+      "frequency": "每 6 小时",
+      "priority": "high"
+    },
+    {
+      "id": "web-bing-site-bdb",
+      "name": "Bing 定向·郑州本地宝",
+      "platform": "Bing",
+      "channel_type": "search_template",
+      "region": "郑州",
+      "url": "https://cn.bing.com/search?q=site%3Azz.bendibao.com%20%E5%A5%B6%E8%8C%B6%20%E4%BC%98%E6%83%A0%20%E5%85%8D%E5%8D%95",
+      "access_method": "browser",
+      "status": "ok",
+      "brands": [
+        "霸王茶姬",
+        "古茗",
+        "茶百道",
+        "蜜雪冰城",
+        "喜茶"
+      ],
+      "keywords": [
+        "本地宝",
+        "特惠"
+      ],
+      "collect_content": "本地宝站内页",
+      "frequency": "每 6 小时",
+      "priority": "medium"
+    },
+    {
+      "id": "web-baidu",
+      "name": "百度网页搜索",
+      "platform": "百度",
+      "channel_type": "search_template",
+      "region": "郑州",
+      "url": "https://www.baidu.com/s?wd=%E9%83%91%E5%B7%9E%20%E5%A5%B6%E8%8C%B6%20%E4%BC%98%E6%83%A0%E5%88%B8%20%E5%9B%A2%E8%B4%AD",
+      "access_method": "browser",
+      "status": "ok",
+      "brands": [
+        "霸王茶姬",
+        "古茗",
+        "茶百道",
+        "蜜雪冰城",
+        "喜茶"
+      ],
+      "keywords": [
+        "优惠券",
+        "团购"
+      ],
+      "collect_content": "中文长尾结果、百家号",
+      "frequency": "每 2 小时",
+      "priority": "high",
+      "note": "实测 200；模板 https://www.baidu.com/s?wd=<关键词>"
+    },
+    {
+      "id": "web-baidu-news",
+      "name": "百度资讯搜索",
+      "platform": "百度",
+      "channel_type": "search_template",
+      "region": "郑州",
+      "url": "https://www.baidu.com/s?tn=news&word=%E9%83%91%E5%B7%9E%20%E5%A5%B6%E8%8C%B6%20%E5%85%8D%E5%8D%95%20%E4%BC%98%E6%83%A0",
+      "access_method": "browser",
+      "status": "ok",
+      "brands": [
+        "霸王茶姬",
+        "古茗",
+        "茶百道",
+        "蜜雪冰城",
+        "喜茶"
+      ],
+      "keywords": [
+        "资讯",
+        "快讯"
+      ],
+      "collect_content": "本地媒体快讯",
+      "frequency": "每 6 小时",
+      "priority": "high",
+      "note": "实测 200；模板 https://www.baidu.com/s?tn=news&word=<关键词>"
+    },
+    {
+      "id": "web-sogou-weixin-article",
+      "name": "搜狗微信·文章搜索",
+      "platform": "搜狗微信",
+      "channel_type": "search_template",
+      "region": "郑州",
+      "url": "https://weixin.sogou.com/weixin?type=2&query=%E9%83%91%E5%B7%9E%20%E5%A5%B6%E8%8C%B6%20%E4%BC%98%E6%83%A0",
+      "access_method": "browser",
+      "status": "ok",
+      "brands": [
+        "霸王茶姬",
+        "古茗",
+        "茶百道",
+        "蜜雪冰城",
+        "喜茶"
+      ],
+      "keywords": [
+        "公众号文章",
+        "口令",
+        "入口"
+      ],
+      "collect_content": "公众号历史推文（含口令与活动短链）",
+      "frequency": "每 6 小时",
+      "priority": "high",
+      "note": "实测 200；高频请求会触发验证码，需控频 + UA 轮换"
+    },
+    {
+      "id": "web-sogou-weixin-account",
+      "name": "搜狗微信·公众号查找",
+      "platform": "搜狗微信",
+      "channel_type": "search_template",
+      "region": "郑州",
+      "url": "https://weixin.sogou.com/weixin?type=1&query=%E9%83%91%E5%B7%9E%E6%9C%AC%E5%9C%B0%E5%AE%9D",
+      "access_method": "browser",
+      "status": "ok",
+      "brands": [
+        "霸王茶姬",
+        "古茗",
+        "茶百道",
+        "蜜雪冰城",
+        "喜茶"
+      ],
+      "keywords": [
+        "公众号",
+        "账号定位"
+      ],
+      "collect_content": "定位并校验公众号主体",
+      "frequency": "按需",
+      "priority": "medium",
+      "note": "实测 200"
+    },
+    {
+      "id": "web-sogou",
+      "name": "搜狗网页搜索",
+      "platform": "搜狗",
+      "channel_type": "search_template",
+      "region": "郑州",
+      "url": "https://www.sogou.com/web?query=%E9%83%91%E5%B7%9E%20%E5%A5%B6%E8%8C%B6%20%E4%BC%98%E6%83%A0",
+      "access_method": "browser",
+      "status": "degraded",
+      "brands": [
+        "霸王茶姬",
+        "古茗",
+        "茶百道",
+        "蜜雪冰城",
+        "喜茶"
+      ],
+      "collect_content": "补充长尾结果",
+      "frequency": "每日",
+      "priority": "low",
+      "note": "实测跳转验证码页 /sogou/captcha/，仅作兜底"
+    },
+    {
+      "id": "web-xhs",
+      "name": "小红书搜索·郑州奶茶羊毛",
+      "platform": "小红书",
+      "channel_type": "search_template",
+      "region": "郑州",
+      "url": "https://www.xiaohongshu.com/search_result/?keyword=%E9%83%91%E5%B7%9E%20%E5%A5%B6%E8%8C%B6%20%E4%BC%98%E6%83%A0",
+      "access_method": "browser",
+      "status": "needs_login",
+      "brands": [
+        "霸王茶姬",
+        "古茗",
+        "茶百道",
+        "蜜雪冰城",
+        "喜茶"
+      ],
+      "keywords": [
+        "攻略",
+        "羊毛",
+        "口令答案",
+        "打卡"
+      ],
+      "collect_content": "用户实测攻略、口令答案、门店限定",
+      "frequency": "每 6 小时",
+      "priority": "high",
+      "note": "页面 200 但笔记内容需登录；口令答案类信息这里最快"
+    },
+    {
+      "id": "web-douyin",
+      "name": "抖音搜索·郑州奶茶优惠",
+      "platform": "抖音",
+      "channel_type": "search_template",
+      "region": "郑州",
+      "url": "https://www.douyin.com/search/%E9%83%91%E5%B7%9E%20%E5%A5%B6%E8%8C%B6%20%E4%BC%98%E6%83%A0",
+      "access_method": "browser",
+      "status": "ok",
+      "brands": [
+        "霸王茶姬",
+        "古茗",
+        "茶百道",
+        "蜜雪冰城",
+        "喜茶"
+      ],
+      "keywords": [
+        "探店",
+        "团购",
+        "直播"
+      ],
+      "collect_content": "短视频/直播挂载的团购与券",
+      "frequency": "每 6 小时",
+      "priority": "medium",
+      "note": "实测 200"
+    },
+    {
+      "id": "web-weibo",
+      "name": "微博搜索",
+      "platform": "微博",
+      "channel_type": "search_template",
+      "region": "郑州",
+      "url": "https://s.weibo.com/weibo?q=%E9%83%91%E5%B7%9E%20%E5%A5%B6%E8%8C%B6%20%E4%BC%98%E6%83%A0",
+      "access_method": "browser",
+      "status": "needs_login",
+      "brands": [
+        "霸王茶姬",
+        "古茗",
+        "茶百道",
+        "蜜雪冰城",
+        "喜茶"
+      ],
+      "keywords": [
+        "热搜",
+        "品牌官宣",
+        "抽奖"
+      ],
+      "collect_content": "品牌官宣与转发抽奖",
+      "frequency": "每 6 小时",
+      "priority": "medium",
+      "note": "实测跳转 passport.weibo.com 访客登录页，需 Cookie"
+    },
+    {
+      "id": "web-bilibili",
+      "name": "B站搜索",
+      "platform": "哔哩哔哩",
+      "channel_type": "search_template",
+      "region": "郑州",
+      "url": "https://search.bilibili.com/all?keyword=%E9%83%91%E5%B7%9E%20%E5%A5%B6%E8%8C%B6%20%E4%BC%98%E6%83%A0",
+      "access_method": "browser",
+      "status": "ok",
+      "brands": [
+        "霸王茶姬",
+        "古茗",
+        "茶百道",
+        "蜜雪冰城",
+        "喜茶"
+      ],
+      "keywords": [
+        "测评",
+        "攻略"
+      ],
+      "collect_content": "羊毛攻略视频与简介链接",
+      "frequency": "每日",
+      "priority": "low",
+      "note": "实测 200"
+    },
+    {
+      "id": "web-zhihu",
+      "name": "知乎搜索",
+      "platform": "知乎",
+      "channel_type": "search_template",
+      "region": "郑州",
+      "url": "https://www.zhihu.com/search?q=%E9%83%91%E5%B7%9E%20%E5%A5%B6%E8%8C%B6%20%E4%BC%98%E6%83%A0",
+      "access_method": "browser",
+      "status": "degraded",
+      "brands": [
+        "霸王茶姬",
+        "古茗",
+        "茶百道",
+        "蜜雪冰城",
+        "喜茶"
+      ],
+      "keywords": [
+        "经验",
+        "汇总"
+      ],
+      "collect_content": "经验贴",
+      "frequency": "每日",
+      "priority": "low",
+      "note": "实测 403，反爬严格，建议降频或跳过"
+    },
+    {
+      "id": "web-smzdm",
+      "name": "什么值得买搜索",
+      "platform": "什么值得买",
+      "channel_type": "search_template",
+      "region": "全国",
+      "url": "https://search.smzdm.com/?c=home&s=%E5%A5%B6%E8%8C%B6%20%E4%BC%98%E6%83%A0%E5%88%B8",
+      "access_method": "browser",
+      "status": "degraded",
+      "brands": [
+        "霸王茶姬",
+        "古茗",
+        "茶百道",
+        "蜜雪冰城",
+        "喜茶"
+      ],
+      "keywords": [
+        "爆料",
+        "好价"
+      ],
+      "collect_content": "网友爆料券",
+      "frequency": "每日",
+      "priority": "medium",
+      "note": "实测 202 + JS 挑战页，需浏览器渲染"
+    },
+    {
+      "id": "web-dahe",
+      "name": "大河网·郑州本地媒体",
+      "platform": "大河网",
+      "channel_type": "web",
+      "region": "郑州",
+      "url": "https://www.dahe.cn/",
+      "entry": "站内搜索「奶茶 消费券 优惠」",
+      "access_method": "browser",
+      "status": "ok",
+      "brands": [
+        "霸王茶姬",
+        "古茗",
+        "茶百道",
+        "蜜雪冰城",
+        "喜茶"
+      ],
+      "keywords": [
+        "消费券",
+        "本地活动"
+      ],
+      "collect_content": "郑州本地消费券与商圈活动",
+      "frequency": "每日",
+      "priority": "medium",
+      "note": "实测 200"
+    },
+    {
+      "id": "web-topnews",
+      "name": "顶端新闻·河南本地媒体",
+      "platform": "顶端新闻",
+      "channel_type": "web",
+      "region": "郑州",
+      "url": "https://www.topnews.cn/",
+      "entry": "站内搜索「奶茶 优惠 消费券」",
+      "access_method": "browser",
+      "status": "ok",
+      "brands": [
+        "霸王茶姬",
+        "古茗",
+        "茶百道",
+        "蜜雪冰城",
+        "喜茶"
+      ],
+      "keywords": [
+        "消费券",
+        "本地资讯"
+      ],
+      "collect_content": "河南本地消费资讯",
+      "frequency": "每日",
+      "priority": "medium",
+      "note": "https://www.dingxinwen.cn/ 实测 302 到本域名"
+    },
+    {
+      "id": "web-henandaily",
+      "name": "河南日报",
+      "platform": "河南日报",
+      "channel_type": "web",
+      "region": "郑州",
+      "url": "https://www.henandaily.cn/",
+      "entry": "站内搜索「消费券 餐饮」",
+      "access_method": "browser",
+      "status": "ok",
+      "brands": [
+        "霸王茶姬",
+        "古茗",
+        "茶百道",
+        "蜜雪冰城",
+        "喜茶"
+      ],
+      "keywords": [
+        "消费券",
+        "政策"
+      ],
+      "collect_content": "省市级消费券发放公告",
+      "frequency": "每周",
+      "priority": "low",
+      "note": "实测 200"
+    },
+    {
+      "id": "web-mp-weixin",
+      "name": "微信公众平台文章直链",
+      "platform": "微信",
+      "channel_type": "web",
+      "region": "全国",
+      "url": "https://mp.weixin.qq.com/",
+      "entry": "由搜索结果获得 /s?__biz=... 文章直链后直接采集",
+      "access_method": "browser",
+      "status": "ok",
+      "brands": [
+        "霸王茶姬",
+        "古茗",
+        "茶百道",
+        "蜜雪冰城",
+        "喜茶"
+      ],
+      "keywords": [
+        "推文",
+        "口令",
+        "活动入口"
+      ],
+      "collect_content": "公众号原文（可被公网直接打开）",
+      "frequency": "按需",
+      "priority": "high",
+      "note": "实测 200；建议对汇总稿 URL 做持久化，文章内常含 #小程序:// 短链"
+    }
+  ],
+  "mini_program_sources": [
+    {
+      "id": "mp-bdb-gzh",
+      "name": "郑州本地宝公众号（核心枢纽）",
+      "platform": "微信公众号",
+      "channel_type": "wechat_official_account",
+      "region": "郑州",
+      "url": "https://weixin.sogou.com/weixin?type=1&query=%E9%83%91%E5%B7%9E%E6%9C%AC%E5%9C%B0%E5%AE%9D",
+      "entry": "微信搜索关注「郑州本地宝」→ 对话框回复品牌名/关键词获取活动直达入口",
+      "access_method": "wechat",
+      "status": "ok",
+      "brands": [
+        "霸王茶姬",
+        "古茗",
+        "茶百道",
+        "蜜雪冰城",
+        "喜茶"
+      ],
+      "keywords": [
+        "霸王茶姬",
+        "古茗",
+        "茶百道",
+        "蜜雪",
+        "喜茶",
+        "瑞幸",
+        "爷爷不泡茶",
+        "沪上阿姨",
+        "茉莉奶白",
+        "益禾堂",
+        "柠季",
+        "林里",
+        "消费券",
+        "特惠优选",
+        "薅羊毛"
+      ],
+      "collect_content": "郑州奶茶免单/特惠活动汇总，返回 #小程序:// 短链与活动口令",
+      "frequency": "每日 + 活动日 2 次",
+      "priority": "high",
+      "note": "整套体系里信息密度最高的单一来源：几乎所有品牌小程序活动入口都可通过回复品牌名拿到；另有视频号「郑州本地宝」"
+    },
+    {
+      "id": "mp-bdb-menu",
+      "name": "郑州本地宝·菜单与特惠优选",
+      "platform": "微信公众号",
+      "channel_type": "wechat_official_account",
+      "region": "郑州",
+      "entry": "公众号底部菜单「微信办事 → 消费券/免费」；推文文末「阅读原文 → 郑州特惠优选」",
+      "access_method": "wechat",
+      "status": "in_app_only",
+      "brands": [
+        "霸王茶姬",
+        "古茗",
+        "茶百道",
+        "蜜雪冰城",
+        "喜茶"
+      ],
+      "keywords": [
+        "消费券",
+        "特惠优选"
+      ],
+      "collect_content": "郑州消费券与特惠聚合落地页",
+      "frequency": "每日",
+      "priority": "high"
+    },
+    {
+      "id": "mp-bdb-video",
+      "name": "郑州本地宝视频号",
+      "platform": "微信视频号",
+      "channel_type": "social",
+      "region": "郑州",
+      "entry": "微信 → 发现 → 视频号 → 搜索「郑州本地宝」",
+      "access_method": "wechat",
+      "status": "in_app_only",
+      "brands": [
+        "霸王茶姬",
+        "古茗",
+        "茶百道",
+        "蜜雪冰城",
+        "喜茶"
+      ],
+      "collect_content": "短视频版活动播报",
+      "frequency": "每日",
+      "priority": "low"
+    },
+    {
+      "id": "mp-brand-group",
+      "name": "品牌企微福利群",
+      "platform": "企业微信",
+      "channel_type": "wechat_group",
+      "region": "郑州",
+      "entry": "小程序/公众号内「加福利官」「加入粉丝群」→ 企微群；蜜雪、茶百道、LINLEE 等有群专属抽奖",
+      "access_method": "wechat",
+      "status": "in_app_only",
+      "brands": [
+        "霸王茶姬",
+        "古茗",
+        "茶百道",
+        "蜜雪冰城",
+        "喜茶"
+      ],
+      "keywords": [
+        "群专属",
+        "抽奖",
+        "口令",
+        "限量券"
+      ],
+      "collect_content": "仅群内发放的免单券与口令（外网抓不到）",
+      "frequency": "每日",
+      "priority": "high",
+      "note": "典型：蜜雪冰城微信粉丝群新老用户每月专属抽奖；茶百道「加茶茶好友」得刮奖机会。必须人工/合规方式入群"
+    },
+    {
+      "id": "mp-brand-subscribe",
+      "name": "品牌小程序订阅消息",
+      "platform": "微信小程序",
+      "channel_type": "push",
+      "region": "郑州",
+      "entry": "小程序活动页点「订阅本场」/ 允许服务通知 → 开抢前微信服务通知提醒",
+      "access_method": "wechat",
+      "status": "in_app_only",
+      "brands": [
+        "霸王茶姬",
+        "古茗",
+        "茶百道",
+        "蜜雪冰城",
+        "喜茶"
+      ],
+      "keywords": [
+        "开抢提醒",
+        "订阅",
+        "限时"
+      ],
+      "collect_content": "整点抢券的准点提醒（古茗星期三等）",
+      "frequency": "每周三 12:00",
+      "priority": "high",
+      "note": "解决『券在 1 分钟内抢完』的问题，属于时效型渠道而非内容型"
+    },
+    {
+      "id": "mp-wx-service-notify",
+      "name": "微信服务通知 / 卡包",
+      "platform": "微信",
+      "channel_type": "push",
+      "region": "郑州",
+      "entry": "微信 → 服务通知 → 各品牌券到期/发放提醒；我 → 卡包 → 券",
+      "access_method": "wechat",
+      "status": "in_app_only",
+      "brands": [
+        "霸王茶姬",
+        "古茗",
+        "茶百道",
+        "蜜雪冰城",
+        "喜茶"
+      ],
+      "keywords": [
+        "券到期",
+        "自动发券"
+      ],
+      "collect_content": "已领券的状态同步与到期提醒",
+      "frequency": "每日",
+      "priority": "medium"
+    },
+    {
+      "id": "mp-app-push",
+      "name": "品牌 App 推送",
+      "platform": "品牌 App",
+      "channel_type": "push",
+      "region": "郑州",
+      "entry": "各品牌 App 开启通知权限 → 券包/会员日推送",
+      "access_method": "app",
+      "status": "in_app_only",
+      "brands": [
+        "霸王茶姬",
+        "古茗",
+        "茶百道",
+        "蜜雪冰城",
+        "喜茶"
+      ],
+      "keywords": [
+        "Push",
+        "会员日"
+      ],
+      "collect_content": "App 专属券与限时推送",
+      "frequency": "每日",
+      "priority": "medium"
+    },
+    {
+      "id": "mp-sms",
+      "name": "品牌/平台短信与站内信",
+      "platform": "短信",
+      "channel_type": "push",
+      "region": "郑州",
+      "entry": "注册手机号后接收品牌与外卖平台营销短信",
+      "access_method": "app",
+      "status": "in_app_only",
+      "brands": [
+        "霸王茶姬",
+        "古茗",
+        "茶百道",
+        "蜜雪冰城",
+        "喜茶"
+      ],
+      "keywords": [
+        "短信",
+        "召回券"
+      ],
+      "collect_content": "沉睡用户召回券、大额满减",
+      "frequency": "每周",
+      "priority": "low"
+    },
+    {
+      "id": "mp-offline-qr",
+      "name": "线下门店物料二维码",
+      "platform": "线下",
+      "channel_type": "offline_qr",
+      "region": "郑州",
+      "entry": "郑州门店收银台海报 / 电子小票二维码 / 自助点单机 / 桌贴 → 微信扫码",
+      "access_method": "wechat",
+      "status": "in_app_only",
+      "brands": [
+        "霸王茶姬",
+        "古茗",
+        "茶百道",
+        "蜜雪冰城",
+        "喜茶"
+      ],
+      "keywords": [
+        "到店立减",
+        "门店限定",
+        "扫码领券"
+      ],
+      "collect_content": "单店限定券、到店立减、新品试饮",
+      "frequency": "每周",
+      "priority": "medium",
+      "note": "门店限定优惠通常不出现在任何线上页面，是覆盖盲区的必要补充"
+    },
+    {
+      "id": "mp-wx-search",
+      "name": "微信小程序全局搜索",
+      "platform": "微信",
+      "channel_type": "mini_program",
+      "region": "郑州",
+      "entry": "微信首页下拉 → 搜索「品牌名 + 点单」或「奶茶 优惠券」→ 小程序结果",
+      "access_method": "wechat",
+      "status": "in_app_only",
+      "brands": [
+        "霸王茶姬",
+        "古茗",
+        "茶百道",
+        "蜜雪冰城",
+        "喜茶"
+      ],
+      "keywords": [
+        "点单",
+        "领券"
+      ],
+      "collect_content": "发现新品牌/新活动小程序的通用兜底路径",
+      "frequency": "按需",
+      "priority": "medium"
+    },
+    {
+      "id": "mp-platform-wxapp",
+      "name": "平台类小程序矩阵",
+      "platform": "微信小程序",
+      "channel_type": "mini_program",
+      "region": "郑州",
+      "entry": "微信搜索：美团外卖 / 淘宝闪购 / 京东秒送 / 抖音团购 / 大众点评 / 支付宝 → 领券中心",
+      "access_method": "wechat",
+      "status": "in_app_only",
+      "brands": [
+        "霸王茶姬",
+        "古茗",
+        "茶百道",
+        "蜜雪冰城",
+        "喜茶"
+      ],
+      "keywords": [
+        "平台红包",
+        "小程序专享券"
+      ],
+      "collect_content": "微信端平台券，与 App 券池常有差异",
+      "frequency": "每日",
+      "priority": "medium"
+    },
+    {
+      "id": "mp-mini-shortlink",
+      "name": "小程序活动短链 #小程序://",
+      "platform": "微信小程序",
+      "channel_type": "deep_link",
+      "region": "郑州",
+      "entry": "从本地宝关键词回复、公众号推文、企微群消息中提取形如 #小程序://<名称>/<hash> 的短链，在微信聊天中点击直达活动页",
+      "access_method": "wechat",
+      "status": "in_app_only",
+      "brands": [
+        "霸王茶姬",
+        "古茗",
+        "茶百道",
+        "蜜雪冰城",
+        "喜茶"
+      ],
+      "keywords": [
+        "活动入口",
+        "口令",
+        "hash"
+      ],
+      "collect_content": "限时活动页直达（比首页横幅更精准）",
+      "frequency": "每日",
+      "priority": "high",
+      "note": "实例（历史活动，hash 会过期）：#小程序://霸王茶姬/np9HE2BLiJyvSZn、#小程序://古茗茶饮点单/CwrEVLeuQmFaguA；短链不可臆造，必须从上述渠道实时抓取"
+    },
+    {
+      "id": "mp-xhs-account",
+      "name": "小红书 · 郑州羊毛博主",
+      "platform": "小红书",
+      "channel_type": "social",
+      "region": "郑州",
+      "url": "https://www.xiaohongshu.com/search_result/?keyword=%E9%83%91%E5%B7%9E%20%E5%A5%B6%E8%8C%B6%20%E7%BE%8A%E6%AF%9B",
+      "entry": "关注郑州本地探店/羊毛账号，看置顶与最新笔记",
+      "access_method": "browser",
+      "status": "needs_login",
+      "brands": [
+        "霸王茶姬",
+        "古茗",
+        "茶百道",
+        "蜜雪冰城",
+        "喜茶"
+      ],
+      "keywords": [
+        "口令答案",
+        "攻略",
+        "实测"
+      ],
+      "collect_content": "古茗星期三口令答案、隐藏券路径、门店实测",
+      "frequency": "每日",
+      "priority": "high"
+    },
+    {
+      "id": "mp-douyin-account",
+      "name": "抖音 · 郑州探店/团购直播",
+      "platform": "抖音",
+      "channel_type": "social",
+      "region": "郑州",
+      "url": "https://www.douyin.com/search/%E9%83%91%E5%B7%9E%20%E5%A5%B6%E8%8C%B6%20%E5%9B%A2%E8%B4%AD",
+      "entry": "关注郑州同城探店号，直播间挂券",
+      "access_method": "browser",
+      "status": "ok",
+      "brands": [
+        "霸王茶姬",
+        "古茗",
+        "茶百道",
+        "蜜雪冰城",
+        "喜茶"
+      ],
+      "keywords": [
+        "直播券",
+        "团购"
+      ],
+      "collect_content": "直播间限量券、同城套餐",
+      "frequency": "每日",
+      "priority": "medium"
+    },
+    {
+      "id": "mp-qq-group",
+      "name": "QQ/微信薅羊毛社群",
+      "platform": "社群",
+      "channel_type": "wechat_group",
+      "region": "郑州",
+      "entry": "由本地宝「薅羊毛」关键词、小红书/公众号推文内的群二维码加入",
+      "access_method": "wechat",
+      "status": "in_app_only",
+      "brands": [
+        "霸王茶姬",
+        "古茗",
+        "茶百道",
+        "蜜雪冰城",
+        "喜茶"
+      ],
+      "keywords": [
+        "线报",
+        "整点",
+        "口令"
+      ],
+      "collect_content": "整点抢券线报、口令答案扩散最快的地方",
+      "frequency": "实时",
+      "priority": "medium",
+      "note": "群内容无公开索引，仅能人工/合规采集；注意辨别虚假券"
+    },
+    {
+      "id": "mp-gov-coupon",
+      "name": "郑州市消费券发放入口",
+      "platform": "政府/平台",
+      "channel_type": "web",
+      "region": "郑州",
+      "url": "https://zz.bendibao.com/youhui/",
+      "entry": "支付宝/云闪付/郑好办 App → 消费券 → 餐饮/饮品类",
+      "access_method": "browser",
+      "status": "ok",
+      "brands": [
+        "霸王茶姬",
+        "古茗",
+        "茶百道",
+        "蜜雪冰城",
+        "喜茶"
+      ],
+      "keywords": [
+        "政府消费券",
+        "餐饮券"
+      ],
+      "collect_content": "市级餐饮消费券（常可用于奶茶）",
+      "frequency": "按需",
+      "priority": "medium",
+      "note": "通过本地宝优惠频道与百度资讯跟踪公告"
+    }
+  ],
+  "validation": {
+    "checked_at": "2026-11-13 14:43 GMT+8",
+    "method": "HTTP GET + User-Agent 模拟，检查状态码、Content-Type 与响应体前 220 字节是否为合法 XML",
+    "summary": "共实测约 70 个候选地址；生成后对文件内 66 个 url 做全量复检并自动降级异常项。status 含义见 field_definitions。",
+    "verified_rss_templates": [
+      "https://www.bing.com/news/search?q=<kw>&format=rss",
+      "https://www.bing.com/search?q=<kw>&format=rss",
+      "https://news.google.com/rss/search?q=<kw>&hl=zh-CN&gl=CN&ceid=CN:zh-Hans"
+    ],
+    "important_findings": [
+      "https://www.ele.me/ 已 302 到 https://taobaoshangou.ele.me/（饿了么并入淘宝闪购），v1 未覆盖该真实入口。",
+      "cn.bing.com 拼 format=rss 会被重定向到 Bing 首页并返回 HTML；RSS 必须用 www.bing.com。",
+      "郑州本地宝公众号（回复品牌名取活动入口）+ 其稿件在 new.qq.com / c.m.163.com 的公开转载，是本场景信息密度最高、且可被程序采集的组合。",
+      "五大品牌官网均实测可达：chagee.com(→/zh-cn)、heycha.com、mxbc.com、gumingnc.com、chabaidao.com。",
+      "郑州本地媒体实测可达：zz.bendibao.com/youhui/、dahe.cn、topnews.cn（dingxinwen.cn → 此域名）、henandaily.cn。"
+    ],
+    "excluded_or_caution": [
+      {
+        "url": "https://cn.bing.com/news/search?...&format=rss",
+        "reason": "重定向到首页，返回 HTML 而非 RSS"
+      },
+      {
+        "url": "https://feed.smzdm.com/",
+        "reason": "403"
+      },
+      {
+        "url": "https://www.smzdm.com/feed/",
+        "reason": "404，该站无可用 RSS"
+      },
+      {
+        "url": "https://www.chabaidao.com/member/coupon",
+        "reason": "404（第三方聚合站文章虚构的『会员券入口』）"
+      },
+      {
+        "url": "https://waimai.jd.com/ , https://song.jd.com/ , https://takeaway.jd.com/",
+        "reason": "均跳转 jd.com/error2.aspx，京东外卖无独立网页域名"
+      },
+      {
+        "url": "https://www.mixue.com/",
+        "reason": "SSL 握手异常 / 502；改用 https://www.mxbc.com/"
+      },
+      {
+        "url": "https://youhui.95516.com/ , https://www.95516.com/",
+        "reason": "403 / SSL 异常，云闪付优惠仅 App 内可达"
+      },
+      {
+        "url": "https://www.zhihu.com/search?...",
+        "reason": "403 反爬"
+      },
+      {
+        "url": "https://www.dianping.com/ , https://s.weibo.com/...",
+        "reason": "跳转验证页 / 访客登录页，需登录态"
+      },
+      {
+        "url": "https://www.sogou.com/web?...",
+        "reason": "跳转 /sogou/captcha/ 验证码页"
+      },
+      {
+        "url": "https://zz.bendibao.com/search/?q=...",
+        "reason": "404，本地宝无此搜索路径；改用 /youhui/ 或搜索引擎 site: 检索"
+      }
+    ],
+    "recheck": {
+      "checked_urls": 66,
+      "result": "66 个 url 中 64 个返回 HTTP 200（另 2 个按预期 degraded：web-zhihu 403、web-smzdm 202 反爬页）。RSS 专项复验见 rss_reality_check：Bing 新闻 RSS 12 条当前返回 HTML，Bing 网页 RSS 2 条返回 XML 但内容无关，Google News RSS 1 条网络不稳。",
+      "auto_downgraded": 0,
+      "failed_ids": []
+    },
+    "rss_reality_check": {
+      "finding": "当前网络环境下，没有既稳定又内容精准的公开中文『奶茶优惠』RSS 源。这是本类来源的真实限制，已如实降级标注，未把不可靠端点标成 ok。",
+      "bing_news_rss": "https://www.bing.com/news/search?q=<kw>&format=rss —— 首轮实测返回合法 RSS 2.0 XML，随后连续多次复验均返回 text/html；与 UA/Accept/Referer 无关，判断为服务端波动或 RSS 输出下线。v1 的 3 条均属此类。",
+      "bing_web_rss": "https://www.bing.com/search?q=<kw>&format=rss —— 稳定返回 XML（每次 10 个 item），但实测首条为『郑州市_百度百科』，优惠相关内容命中率极低。",
+      "google_news_rss": "首轮 200 且返回 XML，复验出现 502 / 连接失败，境内网络不稳定。",
+      "smzdm_rss": "feed.smzdm.com 403、/feed 404；本地宝无 RSS 路径（/rss/ 404）。",
+      "recommended_primary": "把『新闻资讯』的实际主力改为第 ④ 类网页搜索：百度资讯、Bing/百度 site:new.qq.com 定向（抓郑州本地宝汇总稿的公开镜像）、zz.bendibao.com/youhui/。这些均实测 200 且内容精准。",
+      "optional_selfhost": "若确需真 RSS，可自建 RSSHub（公共实例 rsshub.app 实测 502 不可用）订阅微博/小红书/B站关键词，或自建代理把上述网页源转成 RSS。"
+    }
+  },
+  "notes": [
+    "v1 的 7 条记录全部保留（3 条 RSS 的 id 与 4 个平台首页的 url 未改动），仅补充字段，因此原有采集代码可继续读取 rss_sources / official_links。",
+    "新增的三类字段（brand_official / web_search_sources / mini_program_sources）为增量，老代码忽略即可，不会破坏解析。",
+    "小程序与公众号没有公网 URL 是微信生态的固有限制，本文件用 entry 字段给出『微信内可正常打开』的精确路径，而非伪造 HTTP 链接。",
+    "status=degraded / unstable 的源建议设失败跳过，不要阻塞主采集流程。",
+    "活动短链 hash 与口令具有时效性，应做到每次采集实时提取，不要写入静态配置。",
+    "重要：RSS 类端点实测不稳定，详见 validation.rss_reality_check。不要仅依赖 rss_sources 做采集，请把第 ④ 类网页搜索与郑州本地宝（含其腾讯新闻/网易转载稿）作为主力。",
+    "status=unstable 的 12 条 Bing 新闻 RSS 予以保留而非删除，原因是它们历史上返回过合法 XML，恢复时可直接生效；采集端按 rss_fallback 处理即可。"
   ]
 }
