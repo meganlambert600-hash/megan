@@ -23,8 +23,13 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
       - name: Run collector tests
         run: python -m unittest discover -s tests -v
+      - name: Run authorized importer tests
+        run: node --test tests/importer.test.mjs
       - name: Collect public leads
         run: python scripts/collect.py
       - name: Commit changed data
