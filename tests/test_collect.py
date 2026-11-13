@@ -141,6 +141,10 @@ class CollectorTests(unittest.TestCase):
             collect.now = original_now
         self.assertEqual(status["status"], "ok")
         self.assertEqual(offers, [])
+        self.assertFalse(collect.search_region_matches(
+            "南昌11月9日奶茶免单优惠活动汇总", "", source,
+            "web_search_sources", config(), self.matchers,
+        ))
 
     def test_captcha_page_is_blocked(self):
         source = {"id": "web", "name": "公开搜索", "url": "https://example.org/search", "channel_type": "web", "access_method": "browser", "status": "ok"}
